@@ -1,0 +1,17 @@
+void main()
+{
+int c,a,b;
+a = 10;
+b = 20;
+c = 30;
+c = 10;
+while (c < 20) do {
+ c = c + 1;
+print (c);
+}
+while a < b + c  do
+{
+  print(c);
+  a = a + 1;
+}
+}

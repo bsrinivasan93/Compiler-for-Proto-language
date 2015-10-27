@@ -1,0 +1,10 @@
+num = input();
+if (num > 0) then
+{
+   c=10+20;
+   d=10;
+}
+else
+{
+    c=c+10;
+}

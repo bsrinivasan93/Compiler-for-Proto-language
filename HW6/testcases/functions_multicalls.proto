@@ -1,0 +1,24 @@
+int sum(int a, int b, int c)
+{
+    int d;
+    d = a+b+c;
+    print(product(a,b,d));
+    return d;
+}
+int product(int a, int b, int c)
+{
+    int d;
+    d = a*b*c;
+    return d;
+}
+void main()
+{
+int i, j, k;
+i =10;
+j =20;
+k = 30;
+print(sum(i, j, k));
+k = product(i,j,k);
+print(k);
+return;
+}

@@ -1,0 +1,14 @@
+int c, d;
+c= 10;
+d= 20;
+if c < 10 then {
+  c =20;
+  d = 30;
+}
+else {
+  c = 30 + d;
+}
+while c < 10 do {
+  c = c -1;
+print (c);
+}

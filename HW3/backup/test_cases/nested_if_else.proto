@@ -1,0 +1,10 @@
+ a = 10;
+b = 20;
+c = 243;
+if a < b + c then
+ if b > c then
+   b = a + c;
+ else
+   b = a - c;
+else
+ a =  b + c;

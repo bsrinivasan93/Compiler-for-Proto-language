@@ -1,0 +1,8 @@
+a = 10;
+b = 20;
+c = 30;
+while a < b + c  do
+{
+  print(c);
+  a = a + 1;
+}

@@ -1,0 +1,18 @@
+int a,b,c,d,e;
+a=2;
+{
+a=10;
+b=a+1;
+d=a-1;
+e=input();
+c=a+b+d*-e;
+print(a-b);
+print(-c);
+{
+a=input();
+}
+print((a+b));
+print(a);
+print(10);
+}
+a=5;

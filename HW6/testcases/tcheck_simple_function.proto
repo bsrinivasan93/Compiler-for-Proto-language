@@ -1,0 +1,18 @@
+void main()
+{
+int a, i, j;
+void v;
+a = 5;
+i = 10;
+j = 20;
+a = sum(a, i, j);
+v = print1();
+}
+int sum(int i, int j, int k)
+{
+    return i+j+k;
+}
+void print1()
+{
+    print(1);
+}

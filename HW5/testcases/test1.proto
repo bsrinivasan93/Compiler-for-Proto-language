@@ -1,0 +1,22 @@
+void main()
+{
+int b,a,sum,num,c;
+b = 0;
+a =  (b*20)+1+2*5;
+    sum = 0;
+    num = input();
+    while (num > 0) do
+        {
+           sum = sum + (num %10);
+           num = num / 10;
+        }
+        print (sum);
+        if ((a>3) && (b < 11)) then
+        { num = num + 2; print (num); 
+      if (num > 3) then print (sum);  else print (sum+num);
+        }
+        else { a = 2;
+    b = 3;
+    c = 4; }
+    return;
+}

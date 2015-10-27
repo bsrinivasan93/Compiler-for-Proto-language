@@ -1,0 +1,9 @@
+int a,b;
+a =10;
+while a < 10 do
+{
+ int c;
+c = 20;
+}
+c = 30;
+print (a);

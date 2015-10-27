@@ -1,0 +1,9 @@
+void main()
+{
+int a,b,c,d ;
+
+a = b = c =  10;
+
+print (b);
+return;
+}

@@ -1,0 +1,12 @@
+void main()
+{
+int a,b,c;
+a=10;
+b=20;
+c=100;
+print(a-b);
+print(-c);
+print((a+b));
+print(a);
+print(10);
+}

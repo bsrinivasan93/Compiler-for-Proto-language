@@ -1,0 +1,10 @@
+void main()
+{
+int i;
+i = 10;
+do {
+print(i);
+}
+while (i < 10);
+}
+

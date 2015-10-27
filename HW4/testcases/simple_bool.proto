@@ -1,0 +1,6 @@
+int c,d ;
+c = true;
+d = false;
+
+print (c);
+print(d);

@@ -1,0 +1,11 @@
+void main()
+{
+int c,a,b,d,e;
+a=10;
+b=30;
+d=40;
+e=a+b;
+c=a+b+d;
+a=input();
+return;
+}

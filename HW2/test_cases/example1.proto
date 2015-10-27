@@ -1,0 +1,13 @@
+a = input();
+print(a);
+b = a + 10;
+print(b);
+c = b - 10;
+print(c);
+d = a * 010;
+print(d);
+e =b  /c ;
+print(e);
+f = a % 10;
+print(999);
+print(f+2);

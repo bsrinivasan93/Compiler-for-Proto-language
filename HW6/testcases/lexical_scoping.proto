@@ -1,0 +1,11 @@
+void main()
+{
+int i,j;
+i=20;
+print(i);
+{
+i=30;
+print(i);
+}
+return;
+}

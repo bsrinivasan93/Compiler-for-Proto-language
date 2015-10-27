@@ -1,0 +1,40 @@
+print (a+b);
+print (a/b);
+print (a%c);
+print (a-b);
+print (-a);
+print (a||b);
+print (a&&b);
+print (a!=b);
+print (!b);
+
+
+//non associative
+print (a>b);
+//print (a>b>c); // should throw an error
+print (a==b);
+a = b;
+a = b;
+ab = input();
+#print (a<b<c); //should throw an error
+--a;
+
+//if-else and nested if else
+if a+b == c then
+  ab = a+b;
+else
+  ab = c;
+
+// else should match to nearest if
+if a+b == c then
+  if a +b < c then
+    if a + b < d then
+      ab = a+b;
+    else
+      ab = d;
+  else
+    ab = c;
+
+//invalid syntax
+$$$$$
+

@@ -1,0 +1,20 @@
+void main()
+{
+int c,a,b,d,e,f,g;
+bool z,y,x;
+a=10;
+b=30;
+d=40;
+f=a++;
+g = --d + ++d;
+f = -d;
+y = true;
+z = !y;
+z = a==b;
+y = a<b;
+x = z&&y;
+e=a+b;
+c=a+b+d;
+z = y;
+//a=input();
+}

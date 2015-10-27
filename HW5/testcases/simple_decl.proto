@@ -1,0 +1,6 @@
+void main()
+{
+int c,d,e;
+c = 10;
+print (c);
+}

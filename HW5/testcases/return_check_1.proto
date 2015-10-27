@@ -1,0 +1,10 @@
+int sum(int i, int j)
+{
+bool b;
+b=true;
+return i+j;
+}
+void main()
+{
+return;
+}

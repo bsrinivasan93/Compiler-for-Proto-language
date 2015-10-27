@@ -1,0 +1,21 @@
+void main()
+{
+int c ;
+int d;
+
+c = d = 5;
+
+if c < 10 then {
+  int d;
+  d = c;
+  if d < 20 then {
+    print (d);
+  }
+  else
+    print(c);
+} 
+else {
+  print (c + 10);
+}
+return;
+}

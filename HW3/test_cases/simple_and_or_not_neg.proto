@@ -1,0 +1,10 @@
+a=10;
+b=20;
+c=(a>5) && 3;
+d=(a<5) || 0;
+e=!d;
+f=-b;
+print(c);
+print(d);
+print(e);
+print(f);

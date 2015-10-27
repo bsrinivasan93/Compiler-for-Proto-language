@@ -1,0 +1,3846 @@
+Created by PLY version 3.4 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    UMINUS
+    SCOMMENT
+    NEWLINE
+
+Grammar
+
+Rule 0     S' -> pgm
+Rule 1     pgm -> decl_star
+Rule 2     decl_star -> decl decl_star
+Rule 3     decl_star -> empty
+Rule 4     decl -> vardecl
+Rule 5     decl -> fundecl
+Rule 6     vardecl -> type varlist SEMICOLON
+Rule 7     fundecl -> type IDENTIFIER LPAREN formalsOpt RPAREN stmt
+Rule 8     formalsOpt -> formals
+Rule 9     formalsOpt -> empty
+Rule 10    type -> INT
+Rule 11    type -> BOOL
+Rule 12    type -> VOID
+Rule 13    type -> type LSQUARE RSQUARE
+Rule 14    varlist -> IDENTIFIER COMMA varlist
+Rule 15    varlist -> IDENTIFIER
+Rule 16    formals -> type IDENTIFIER COMMA formals
+Rule 17    formals -> type IDENTIFIER
+Rule 18    stmt -> SE SEMICOLON
+Rule 19    stmt -> PRINT LPAREN AE RPAREN SEMICOLON
+Rule 20    stmt -> LBRACE vardecl_star stmt_star RBRACE
+Rule 21    vardecl_star -> vardecl vardecl_star
+Rule 22    vardecl_star -> empty
+Rule 23    stmt_star -> stmt stmt_star
+Rule 24    stmt_star -> empty
+Rule 25    stmt -> IF AE THEN stmt ELSE stmt
+Rule 26    stmt -> IF AE THEN stmt
+Rule 27    stmt -> WHILE AE DO stmt
+Rule 28    stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt
+Rule 29    SEOpt -> SE
+Rule 30    SEOpt -> empty
+Rule 31    AEOpt -> AE
+Rule 32    AEOpt -> empty
+Rule 33    stmt -> DO stmt WHILE AE SEMICOLON
+Rule 34    stmt -> RETURN AEOpt SEMICOLON
+Rule 35    SE -> lhs EQUALS AE
+Rule 36    SE -> lhs INCREMENT
+Rule 37    SE -> lhs DECREMENT
+Rule 38    SE -> INCREMENT lhs
+Rule 39    SE -> DECREMENT lhs
+Rule 40    lhs -> IDENTIFIER
+Rule 41    lhs -> arrayAccess
+Rule 42    AE -> AE binop AE
+Rule 43    AE -> unop AE
+Rule 44    AE -> primary
+Rule 45    AE -> SE
+Rule 46    AE -> newArray
+Rule 47    primary -> INTCONST
+Rule 48    primary -> TRUE
+Rule 49    primary -> FALSE
+Rule 50    primary -> INPUT LPAREN RPAREN
+Rule 51    primary -> LPAREN AE RPAREN
+Rule 52    primary -> IDENTIFIER
+Rule 53    primary -> arrayAccess
+Rule 54    primary -> functionCall
+Rule 55    arrayAccess -> primary LSQUARE AE RSQUARE
+Rule 56    functionCall -> IDENTIFIER LPAREN argsOpt RPAREN
+Rule 57    argsOpt -> args
+Rule 58    argsOpt -> empty
+Rule 59    args -> AE COMMA args
+Rule 60    args -> AE
+Rule 61    newArray -> NEW type dimexpr dim_star
+Rule 62    dim_star -> dim dim_star
+Rule 63    dim_star -> empty
+Rule 64    dimexpr -> LSQUARE AE RSQUARE
+Rule 65    dim -> LSQUARE RSQUARE
+Rule 66    binop -> PLUS
+Rule 67    binop -> MINUS
+Rule 68    binop -> STAR
+Rule 69    binop -> DIV
+Rule 70    binop -> MOD
+Rule 71    binop -> AND
+Rule 72    binop -> OR
+Rule 73    binop -> EQUAL
+Rule 74    binop -> NEQUAL
+Rule 75    binop -> LTHANEQ
+Rule 76    binop -> LTHAN
+Rule 77    binop -> GTHANEQ
+Rule 78    binop -> GTHAN
+Rule 79    unop -> MINUS
+Rule 80    unop -> NOT
+Rule 81    empty -> <empty>
+
+Terminals, with rules where they appear
+
+AND                  : 71
+BOOL                 : 11
+COMMA                : 14 16 59
+DECREMENT            : 37 39
+DIV                  : 69
+DO                   : 27 33
+ELSE                 : 25
+EQUAL                : 73
+EQUALS               : 35
+FALSE                : 49
+FOR                  : 28
+GTHAN                : 78
+GTHANEQ              : 77
+IDENTIFIER           : 7 14 15 16 17 40 52 56
+IF                   : 25 26
+INCREMENT            : 36 38
+INPUT                : 50
+INT                  : 10
+INTCONST             : 47
+LBRACE               : 20
+LPAREN               : 7 19 28 50 51 56
+LSQUARE              : 13 55 64 65
+LTHAN                : 76
+LTHANEQ              : 75
+MINUS                : 67 79
+MOD                  : 70
+NEQUAL               : 74
+NEW                  : 61
+NEWLINE              : 
+NOT                  : 80
+OR                   : 72
+PLUS                 : 66
+PRINT                : 19
+RBRACE               : 20
+RETURN               : 34
+RPAREN               : 7 19 28 50 51 56
+RSQUARE              : 13 55 64 65
+SCOMMENT             : 
+SEMICOLON            : 6 18 19 28 28 33 34
+STAR                 : 68
+THEN                 : 25 26
+TRUE                 : 48
+UMINUS               : 
+VOID                 : 12
+WHILE                : 27 33
+error                : 
+
+Nonterminals, with rules where they appear
+
+AE                   : 19 25 26 27 31 33 35 42 42 43 51 55 59 60 64
+AEOpt                : 28 34
+SE                   : 18 29 45
+SEOpt                : 28 28
+args                 : 57 59
+argsOpt              : 56
+arrayAccess          : 41 53
+binop                : 42
+decl                 : 2
+decl_star            : 1 2
+dim                  : 62
+dim_star             : 61 62
+dimexpr              : 61
+empty                : 3 9 22 24 30 32 58 63
+formals              : 8 16
+formalsOpt           : 7
+functionCall         : 54
+fundecl              : 5
+lhs                  : 35 36 37 38 39
+newArray             : 46
+pgm                  : 0
+primary              : 44 55
+stmt                 : 7 23 25 25 26 27 28 33
+stmt_star            : 20 23
+type                 : 6 7 13 16 17 61
+unop                 : 43
+vardecl              : 4 21
+vardecl_star         : 20 21
+varlist              : 6 14
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . pgm
+    (1) pgm -> . decl_star
+    (2) decl_star -> . decl decl_star
+    (3) decl_star -> . empty
+    (4) decl -> . vardecl
+    (5) decl -> . fundecl
+    (81) empty -> .
+    (6) vardecl -> . type varlist SEMICOLON
+    (7) fundecl -> . type IDENTIFIER LPAREN formalsOpt RPAREN stmt
+    (10) type -> . INT
+    (11) type -> . BOOL
+    (12) type -> . VOID
+    (13) type -> . type LSQUARE RSQUARE
+
+    $end            reduce using rule 81 (empty -> .)
+    INT             shift and go to state 9
+    BOOL            shift and go to state 7
+    VOID            shift and go to state 4
+
+    decl                           shift and go to state 1
+    decl_star                      shift and go to state 2
+    vardecl                        shift and go to state 3
+    pgm                            shift and go to state 5
+    fundecl                        shift and go to state 6
+    type                           shift and go to state 8
+    empty                          shift and go to state 10
+
+state 1
+
+    (2) decl_star -> decl . decl_star
+    (2) decl_star -> . decl decl_star
+    (3) decl_star -> . empty
+    (4) decl -> . vardecl
+    (5) decl -> . fundecl
+    (81) empty -> .
+    (6) vardecl -> . type varlist SEMICOLON
+    (7) fundecl -> . type IDENTIFIER LPAREN formalsOpt RPAREN stmt
+    (10) type -> . INT
+    (11) type -> . BOOL
+    (12) type -> . VOID
+    (13) type -> . type LSQUARE RSQUARE
+
+    $end            reduce using rule 81 (empty -> .)
+    INT             shift and go to state 9
+    BOOL            shift and go to state 7
+    VOID            shift and go to state 4
+
+    decl                           shift and go to state 1
+    decl_star                      shift and go to state 11
+    vardecl                        shift and go to state 3
+    fundecl                        shift and go to state 6
+    type                           shift and go to state 8
+    empty                          shift and go to state 10
+
+state 2
+
+    (1) pgm -> decl_star .
+
+    $end            reduce using rule 1 (pgm -> decl_star .)
+
+
+state 3
+
+    (4) decl -> vardecl .
+
+    INT             reduce using rule 4 (decl -> vardecl .)
+    BOOL            reduce using rule 4 (decl -> vardecl .)
+    VOID            reduce using rule 4 (decl -> vardecl .)
+    $end            reduce using rule 4 (decl -> vardecl .)
+
+
+state 4
+
+    (12) type -> VOID .
+
+    IDENTIFIER      reduce using rule 12 (type -> VOID .)
+    LSQUARE         reduce using rule 12 (type -> VOID .)
+
+
+state 5
+
+    (0) S' -> pgm .
+
+
+
+state 6
+
+    (5) decl -> fundecl .
+
+    INT             reduce using rule 5 (decl -> fundecl .)
+    BOOL            reduce using rule 5 (decl -> fundecl .)
+    VOID            reduce using rule 5 (decl -> fundecl .)
+    $end            reduce using rule 5 (decl -> fundecl .)
+
+
+state 7
+
+    (11) type -> BOOL .
+
+    IDENTIFIER      reduce using rule 11 (type -> BOOL .)
+    LSQUARE         reduce using rule 11 (type -> BOOL .)
+
+
+state 8
+
+    (6) vardecl -> type . varlist SEMICOLON
+    (7) fundecl -> type . IDENTIFIER LPAREN formalsOpt RPAREN stmt
+    (13) type -> type . LSQUARE RSQUARE
+    (14) varlist -> . IDENTIFIER COMMA varlist
+    (15) varlist -> . IDENTIFIER
+
+    IDENTIFIER      shift and go to state 14
+    LSQUARE         shift and go to state 12
+
+    varlist                        shift and go to state 13
+
+state 9
+
+    (10) type -> INT .
+
+    IDENTIFIER      reduce using rule 10 (type -> INT .)
+    LSQUARE         reduce using rule 10 (type -> INT .)
+
+
+state 10
+
+    (3) decl_star -> empty .
+
+    $end            reduce using rule 3 (decl_star -> empty .)
+
+
+state 11
+
+    (2) decl_star -> decl decl_star .
+
+    $end            reduce using rule 2 (decl_star -> decl decl_star .)
+
+
+state 12
+
+    (13) type -> type LSQUARE . RSQUARE
+
+    RSQUARE         shift and go to state 15
+
+
+state 13
+
+    (6) vardecl -> type varlist . SEMICOLON
+
+    SEMICOLON       shift and go to state 16
+
+
+state 14
+
+    (7) fundecl -> type IDENTIFIER . LPAREN formalsOpt RPAREN stmt
+    (14) varlist -> IDENTIFIER . COMMA varlist
+    (15) varlist -> IDENTIFIER .
+
+    LPAREN          shift and go to state 18
+    COMMA           shift and go to state 17
+    SEMICOLON       reduce using rule 15 (varlist -> IDENTIFIER .)
+
+
+state 15
+
+    (13) type -> type LSQUARE RSQUARE .
+
+    IDENTIFIER      reduce using rule 13 (type -> type LSQUARE RSQUARE .)
+    LSQUARE         reduce using rule 13 (type -> type LSQUARE RSQUARE .)
+
+
+state 16
+
+    (6) vardecl -> type varlist SEMICOLON .
+
+    INT             reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+    BOOL            reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+    VOID            reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+    $end            reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+    PRINT           reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+    LBRACE          reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+    IF              reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+    WHILE           reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+    FOR             reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+    DO              reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+    RETURN          reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+    INCREMENT       reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+    DECREMENT       reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+    IDENTIFIER      reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+    INTCONST        reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+    TRUE            reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+    FALSE           reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+    INPUT           reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+    LPAREN          reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+    RBRACE          reduce using rule 6 (vardecl -> type varlist SEMICOLON .)
+
+
+state 17
+
+    (14) varlist -> IDENTIFIER COMMA . varlist
+    (14) varlist -> . IDENTIFIER COMMA varlist
+    (15) varlist -> . IDENTIFIER
+
+    IDENTIFIER      shift and go to state 20
+
+    varlist                        shift and go to state 19
+
+state 18
+
+    (7) fundecl -> type IDENTIFIER LPAREN . formalsOpt RPAREN stmt
+    (8) formalsOpt -> . formals
+    (9) formalsOpt -> . empty
+    (16) formals -> . type IDENTIFIER COMMA formals
+    (17) formals -> . type IDENTIFIER
+    (81) empty -> .
+    (10) type -> . INT
+    (11) type -> . BOOL
+    (12) type -> . VOID
+    (13) type -> . type LSQUARE RSQUARE
+
+    RPAREN          reduce using rule 81 (empty -> .)
+    INT             shift and go to state 9
+    BOOL            shift and go to state 7
+    VOID            shift and go to state 4
+
+    formalsOpt                     shift and go to state 21
+    type                           shift and go to state 22
+    empty                          shift and go to state 23
+    formals                        shift and go to state 24
+
+state 19
+
+    (14) varlist -> IDENTIFIER COMMA varlist .
+
+    SEMICOLON       reduce using rule 14 (varlist -> IDENTIFIER COMMA varlist .)
+
+
+state 20
+
+    (14) varlist -> IDENTIFIER . COMMA varlist
+    (15) varlist -> IDENTIFIER .
+
+    COMMA           shift and go to state 17
+    SEMICOLON       reduce using rule 15 (varlist -> IDENTIFIER .)
+
+
+state 21
+
+    (7) fundecl -> type IDENTIFIER LPAREN formalsOpt . RPAREN stmt
+
+    RPAREN          shift and go to state 25
+
+
+state 22
+
+    (16) formals -> type . IDENTIFIER COMMA formals
+    (17) formals -> type . IDENTIFIER
+    (13) type -> type . LSQUARE RSQUARE
+
+    IDENTIFIER      shift and go to state 26
+    LSQUARE         shift and go to state 12
+
+
+state 23
+
+    (9) formalsOpt -> empty .
+
+    RPAREN          reduce using rule 9 (formalsOpt -> empty .)
+
+
+state 24
+
+    (8) formalsOpt -> formals .
+
+    RPAREN          reduce using rule 8 (formalsOpt -> formals .)
+
+
+state 25
+
+    (7) fundecl -> type IDENTIFIER LPAREN formalsOpt RPAREN . stmt
+    (18) stmt -> . SE SEMICOLON
+    (19) stmt -> . PRINT LPAREN AE RPAREN SEMICOLON
+    (20) stmt -> . LBRACE vardecl_star stmt_star RBRACE
+    (25) stmt -> . IF AE THEN stmt ELSE stmt
+    (26) stmt -> . IF AE THEN stmt
+    (27) stmt -> . WHILE AE DO stmt
+    (28) stmt -> . FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt
+    (33) stmt -> . DO stmt WHILE AE SEMICOLON
+    (34) stmt -> . RETURN AEOpt SEMICOLON
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+
+    PRINT           shift and go to state 30
+    LBRACE          shift and go to state 43
+    IF              shift and go to state 42
+    WHILE           shift and go to state 29
+    FOR             shift and go to state 36
+    DO              shift and go to state 27
+    RETURN          shift and go to state 31
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    IDENTIFIER      shift and go to state 35
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+
+    primary                        shift and go to state 28
+    stmt                           shift and go to state 37
+    functionCall                   shift and go to state 38
+    lhs                            shift and go to state 45
+    arrayAccess                    shift and go to state 34
+    SE                             shift and go to state 47
+
+state 26
+
+    (16) formals -> type IDENTIFIER . COMMA formals
+    (17) formals -> type IDENTIFIER .
+
+    COMMA           shift and go to state 48
+    RPAREN          reduce using rule 17 (formals -> type IDENTIFIER .)
+
+
+state 27
+
+    (33) stmt -> DO . stmt WHILE AE SEMICOLON
+    (18) stmt -> . SE SEMICOLON
+    (19) stmt -> . PRINT LPAREN AE RPAREN SEMICOLON
+    (20) stmt -> . LBRACE vardecl_star stmt_star RBRACE
+    (25) stmt -> . IF AE THEN stmt ELSE stmt
+    (26) stmt -> . IF AE THEN stmt
+    (27) stmt -> . WHILE AE DO stmt
+    (28) stmt -> . FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt
+    (33) stmt -> . DO stmt WHILE AE SEMICOLON
+    (34) stmt -> . RETURN AEOpt SEMICOLON
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+
+    PRINT           shift and go to state 30
+    LBRACE          shift and go to state 43
+    IF              shift and go to state 42
+    WHILE           shift and go to state 29
+    FOR             shift and go to state 36
+    DO              shift and go to state 27
+    RETURN          shift and go to state 31
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    IDENTIFIER      shift and go to state 35
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+
+    primary                        shift and go to state 28
+    stmt                           shift and go to state 49
+    functionCall                   shift and go to state 38
+    lhs                            shift and go to state 45
+    arrayAccess                    shift and go to state 34
+    SE                             shift and go to state 47
+
+state 28
+
+    (55) arrayAccess -> primary . LSQUARE AE RSQUARE
+
+    LSQUARE         shift and go to state 50
+
+
+state 29
+
+    (27) stmt -> WHILE . AE DO stmt
+    (42) AE -> . AE binop AE
+    (43) AE -> . unop AE
+    (44) AE -> . primary
+    (45) AE -> . SE
+    (46) AE -> . newArray
+    (79) unop -> . MINUS
+    (80) unop -> . NOT
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (61) newArray -> . NEW type dimexpr dim_star
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+
+    MINUS           shift and go to state 55
+    NOT             shift and go to state 59
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+    IDENTIFIER      shift and go to state 57
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    NEW             shift and go to state 54
+
+    unop                           shift and go to state 51
+    AE                             shift and go to state 58
+    primary                        shift and go to state 52
+    functionCall                   shift and go to state 38
+    newArray                       shift and go to state 53
+    lhs                            shift and go to state 45
+    arrayAccess                    shift and go to state 56
+    SE                             shift and go to state 60
+
+state 30
+
+    (19) stmt -> PRINT . LPAREN AE RPAREN SEMICOLON
+
+    LPAREN          shift and go to state 61
+
+
+state 31
+
+    (34) stmt -> RETURN . AEOpt SEMICOLON
+    (31) AEOpt -> . AE
+    (32) AEOpt -> . empty
+    (42) AE -> . AE binop AE
+    (43) AE -> . unop AE
+    (44) AE -> . primary
+    (45) AE -> . SE
+    (46) AE -> . newArray
+    (81) empty -> .
+    (79) unop -> . MINUS
+    (80) unop -> . NOT
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (61) newArray -> . NEW type dimexpr dim_star
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+
+    SEMICOLON       reduce using rule 81 (empty -> .)
+    MINUS           shift and go to state 55
+    NOT             shift and go to state 59
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+    IDENTIFIER      shift and go to state 57
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    NEW             shift and go to state 54
+
+    unop                           shift and go to state 51
+    AE                             shift and go to state 64
+    lhs                            shift and go to state 45
+    primary                        shift and go to state 52
+    functionCall                   shift and go to state 38
+    SE                             shift and go to state 60
+    AEOpt                          shift and go to state 62
+    arrayAccess                    shift and go to state 56
+    empty                          shift and go to state 63
+    newArray                       shift and go to state 53
+
+state 32
+
+    (48) primary -> TRUE .
+
+    LSQUARE         reduce using rule 48 (primary -> TRUE .)
+    PLUS            reduce using rule 48 (primary -> TRUE .)
+    MINUS           reduce using rule 48 (primary -> TRUE .)
+    STAR            reduce using rule 48 (primary -> TRUE .)
+    DIV             reduce using rule 48 (primary -> TRUE .)
+    MOD             reduce using rule 48 (primary -> TRUE .)
+    AND             reduce using rule 48 (primary -> TRUE .)
+    OR              reduce using rule 48 (primary -> TRUE .)
+    EQUAL           reduce using rule 48 (primary -> TRUE .)
+    NEQUAL          reduce using rule 48 (primary -> TRUE .)
+    LTHANEQ         reduce using rule 48 (primary -> TRUE .)
+    LTHAN           reduce using rule 48 (primary -> TRUE .)
+    GTHANEQ         reduce using rule 48 (primary -> TRUE .)
+    GTHAN           reduce using rule 48 (primary -> TRUE .)
+    SEMICOLON       reduce using rule 48 (primary -> TRUE .)
+    DO              reduce using rule 48 (primary -> TRUE .)
+    THEN            reduce using rule 48 (primary -> TRUE .)
+    COMMA           reduce using rule 48 (primary -> TRUE .)
+    RPAREN          reduce using rule 48 (primary -> TRUE .)
+    RSQUARE         reduce using rule 48 (primary -> TRUE .)
+
+
+state 33
+
+    (38) SE -> INCREMENT . lhs
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+
+    IDENTIFIER      shift and go to state 35
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+
+    primary                        shift and go to state 28
+    functionCall                   shift and go to state 38
+    lhs                            shift and go to state 65
+    arrayAccess                    shift and go to state 34
+
+state 34
+
+    (41) lhs -> arrayAccess .
+    (53) primary -> arrayAccess .
+
+    SEMICOLON       reduce using rule 41 (lhs -> arrayAccess .)
+    DO              reduce using rule 41 (lhs -> arrayAccess .)
+    PLUS            reduce using rule 41 (lhs -> arrayAccess .)
+    MINUS           reduce using rule 41 (lhs -> arrayAccess .)
+    STAR            reduce using rule 41 (lhs -> arrayAccess .)
+    DIV             reduce using rule 41 (lhs -> arrayAccess .)
+    MOD             reduce using rule 41 (lhs -> arrayAccess .)
+    AND             reduce using rule 41 (lhs -> arrayAccess .)
+    OR              reduce using rule 41 (lhs -> arrayAccess .)
+    EQUAL           reduce using rule 41 (lhs -> arrayAccess .)
+    NEQUAL          reduce using rule 41 (lhs -> arrayAccess .)
+    LTHANEQ         reduce using rule 41 (lhs -> arrayAccess .)
+    LTHAN           reduce using rule 41 (lhs -> arrayAccess .)
+    GTHANEQ         reduce using rule 41 (lhs -> arrayAccess .)
+    GTHAN           reduce using rule 41 (lhs -> arrayAccess .)
+    RPAREN          reduce using rule 41 (lhs -> arrayAccess .)
+    THEN            reduce using rule 41 (lhs -> arrayAccess .)
+    RSQUARE         reduce using rule 41 (lhs -> arrayAccess .)
+    COMMA           reduce using rule 41 (lhs -> arrayAccess .)
+    EQUALS          reduce using rule 41 (lhs -> arrayAccess .)
+    INCREMENT       reduce using rule 41 (lhs -> arrayAccess .)
+    DECREMENT       reduce using rule 41 (lhs -> arrayAccess .)
+    LSQUARE         reduce using rule 53 (primary -> arrayAccess .)
+
+
+state 35
+
+    (40) lhs -> IDENTIFIER .
+    (52) primary -> IDENTIFIER .
+    (56) functionCall -> IDENTIFIER . LPAREN argsOpt RPAREN
+
+    SEMICOLON       reduce using rule 40 (lhs -> IDENTIFIER .)
+    DO              reduce using rule 40 (lhs -> IDENTIFIER .)
+    PLUS            reduce using rule 40 (lhs -> IDENTIFIER .)
+    MINUS           reduce using rule 40 (lhs -> IDENTIFIER .)
+    STAR            reduce using rule 40 (lhs -> IDENTIFIER .)
+    DIV             reduce using rule 40 (lhs -> IDENTIFIER .)
+    MOD             reduce using rule 40 (lhs -> IDENTIFIER .)
+    AND             reduce using rule 40 (lhs -> IDENTIFIER .)
+    OR              reduce using rule 40 (lhs -> IDENTIFIER .)
+    EQUAL           reduce using rule 40 (lhs -> IDENTIFIER .)
+    NEQUAL          reduce using rule 40 (lhs -> IDENTIFIER .)
+    LTHANEQ         reduce using rule 40 (lhs -> IDENTIFIER .)
+    LTHAN           reduce using rule 40 (lhs -> IDENTIFIER .)
+    GTHANEQ         reduce using rule 40 (lhs -> IDENTIFIER .)
+    GTHAN           reduce using rule 40 (lhs -> IDENTIFIER .)
+    RPAREN          reduce using rule 40 (lhs -> IDENTIFIER .)
+    THEN            reduce using rule 40 (lhs -> IDENTIFIER .)
+    RSQUARE         reduce using rule 40 (lhs -> IDENTIFIER .)
+    COMMA           reduce using rule 40 (lhs -> IDENTIFIER .)
+    EQUALS          reduce using rule 40 (lhs -> IDENTIFIER .)
+    INCREMENT       reduce using rule 40 (lhs -> IDENTIFIER .)
+    DECREMENT       reduce using rule 40 (lhs -> IDENTIFIER .)
+    LSQUARE         reduce using rule 52 (primary -> IDENTIFIER .)
+    LPAREN          shift and go to state 66
+
+
+state 36
+
+    (28) stmt -> FOR . LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt
+
+    LPAREN          shift and go to state 67
+
+
+state 37
+
+    (7) fundecl -> type IDENTIFIER LPAREN formalsOpt RPAREN stmt .
+
+    INT             reduce using rule 7 (fundecl -> type IDENTIFIER LPAREN formalsOpt RPAREN stmt .)
+    BOOL            reduce using rule 7 (fundecl -> type IDENTIFIER LPAREN formalsOpt RPAREN stmt .)
+    VOID            reduce using rule 7 (fundecl -> type IDENTIFIER LPAREN formalsOpt RPAREN stmt .)
+    $end            reduce using rule 7 (fundecl -> type IDENTIFIER LPAREN formalsOpt RPAREN stmt .)
+
+
+state 38
+
+    (54) primary -> functionCall .
+
+    LSQUARE         reduce using rule 54 (primary -> functionCall .)
+    PLUS            reduce using rule 54 (primary -> functionCall .)
+    MINUS           reduce using rule 54 (primary -> functionCall .)
+    STAR            reduce using rule 54 (primary -> functionCall .)
+    DIV             reduce using rule 54 (primary -> functionCall .)
+    MOD             reduce using rule 54 (primary -> functionCall .)
+    AND             reduce using rule 54 (primary -> functionCall .)
+    OR              reduce using rule 54 (primary -> functionCall .)
+    EQUAL           reduce using rule 54 (primary -> functionCall .)
+    NEQUAL          reduce using rule 54 (primary -> functionCall .)
+    LTHANEQ         reduce using rule 54 (primary -> functionCall .)
+    LTHAN           reduce using rule 54 (primary -> functionCall .)
+    GTHANEQ         reduce using rule 54 (primary -> functionCall .)
+    GTHAN           reduce using rule 54 (primary -> functionCall .)
+    SEMICOLON       reduce using rule 54 (primary -> functionCall .)
+    DO              reduce using rule 54 (primary -> functionCall .)
+    THEN            reduce using rule 54 (primary -> functionCall .)
+    COMMA           reduce using rule 54 (primary -> functionCall .)
+    RPAREN          reduce using rule 54 (primary -> functionCall .)
+    RSQUARE         reduce using rule 54 (primary -> functionCall .)
+
+
+state 39
+
+    (51) primary -> LPAREN . AE RPAREN
+    (42) AE -> . AE binop AE
+    (43) AE -> . unop AE
+    (44) AE -> . primary
+    (45) AE -> . SE
+    (46) AE -> . newArray
+    (79) unop -> . MINUS
+    (80) unop -> . NOT
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (61) newArray -> . NEW type dimexpr dim_star
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+
+    MINUS           shift and go to state 55
+    NOT             shift and go to state 59
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+    IDENTIFIER      shift and go to state 57
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    NEW             shift and go to state 54
+
+    unop                           shift and go to state 51
+    AE                             shift and go to state 68
+    primary                        shift and go to state 52
+    functionCall                   shift and go to state 38
+    newArray                       shift and go to state 53
+    lhs                            shift and go to state 45
+    arrayAccess                    shift and go to state 56
+    SE                             shift and go to state 60
+
+state 40
+
+    (47) primary -> INTCONST .
+
+    LSQUARE         reduce using rule 47 (primary -> INTCONST .)
+    PLUS            reduce using rule 47 (primary -> INTCONST .)
+    MINUS           reduce using rule 47 (primary -> INTCONST .)
+    STAR            reduce using rule 47 (primary -> INTCONST .)
+    DIV             reduce using rule 47 (primary -> INTCONST .)
+    MOD             reduce using rule 47 (primary -> INTCONST .)
+    AND             reduce using rule 47 (primary -> INTCONST .)
+    OR              reduce using rule 47 (primary -> INTCONST .)
+    EQUAL           reduce using rule 47 (primary -> INTCONST .)
+    NEQUAL          reduce using rule 47 (primary -> INTCONST .)
+    LTHANEQ         reduce using rule 47 (primary -> INTCONST .)
+    LTHAN           reduce using rule 47 (primary -> INTCONST .)
+    GTHANEQ         reduce using rule 47 (primary -> INTCONST .)
+    GTHAN           reduce using rule 47 (primary -> INTCONST .)
+    SEMICOLON       reduce using rule 47 (primary -> INTCONST .)
+    DO              reduce using rule 47 (primary -> INTCONST .)
+    THEN            reduce using rule 47 (primary -> INTCONST .)
+    COMMA           reduce using rule 47 (primary -> INTCONST .)
+    RPAREN          reduce using rule 47 (primary -> INTCONST .)
+    RSQUARE         reduce using rule 47 (primary -> INTCONST .)
+
+
+state 41
+
+    (50) primary -> INPUT . LPAREN RPAREN
+
+    LPAREN          shift and go to state 69
+
+
+state 42
+
+    (25) stmt -> IF . AE THEN stmt ELSE stmt
+    (26) stmt -> IF . AE THEN stmt
+    (42) AE -> . AE binop AE
+    (43) AE -> . unop AE
+    (44) AE -> . primary
+    (45) AE -> . SE
+    (46) AE -> . newArray
+    (79) unop -> . MINUS
+    (80) unop -> . NOT
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (61) newArray -> . NEW type dimexpr dim_star
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+
+    MINUS           shift and go to state 55
+    NOT             shift and go to state 59
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+    IDENTIFIER      shift and go to state 57
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    NEW             shift and go to state 54
+
+    unop                           shift and go to state 51
+    AE                             shift and go to state 70
+    primary                        shift and go to state 52
+    functionCall                   shift and go to state 38
+    newArray                       shift and go to state 53
+    lhs                            shift and go to state 45
+    arrayAccess                    shift and go to state 56
+    SE                             shift and go to state 60
+
+state 43
+
+    (20) stmt -> LBRACE . vardecl_star stmt_star RBRACE
+    (21) vardecl_star -> . vardecl vardecl_star
+    (22) vardecl_star -> . empty
+    (6) vardecl -> . type varlist SEMICOLON
+    (81) empty -> .
+    (10) type -> . INT
+    (11) type -> . BOOL
+    (12) type -> . VOID
+    (13) type -> . type LSQUARE RSQUARE
+
+    PRINT           reduce using rule 81 (empty -> .)
+    LBRACE          reduce using rule 81 (empty -> .)
+    IF              reduce using rule 81 (empty -> .)
+    WHILE           reduce using rule 81 (empty -> .)
+    FOR             reduce using rule 81 (empty -> .)
+    DO              reduce using rule 81 (empty -> .)
+    RETURN          reduce using rule 81 (empty -> .)
+    INCREMENT       reduce using rule 81 (empty -> .)
+    DECREMENT       reduce using rule 81 (empty -> .)
+    IDENTIFIER      reduce using rule 81 (empty -> .)
+    INTCONST        reduce using rule 81 (empty -> .)
+    TRUE            reduce using rule 81 (empty -> .)
+    FALSE           reduce using rule 81 (empty -> .)
+    INPUT           reduce using rule 81 (empty -> .)
+    LPAREN          reduce using rule 81 (empty -> .)
+    RBRACE          reduce using rule 81 (empty -> .)
+    INT             shift and go to state 9
+    BOOL            shift and go to state 7
+    VOID            shift and go to state 4
+
+    type                           shift and go to state 71
+    vardecl                        shift and go to state 72
+    vardecl_star                   shift and go to state 73
+    empty                          shift and go to state 74
+
+state 44
+
+    (49) primary -> FALSE .
+
+    LSQUARE         reduce using rule 49 (primary -> FALSE .)
+    PLUS            reduce using rule 49 (primary -> FALSE .)
+    MINUS           reduce using rule 49 (primary -> FALSE .)
+    STAR            reduce using rule 49 (primary -> FALSE .)
+    DIV             reduce using rule 49 (primary -> FALSE .)
+    MOD             reduce using rule 49 (primary -> FALSE .)
+    AND             reduce using rule 49 (primary -> FALSE .)
+    OR              reduce using rule 49 (primary -> FALSE .)
+    EQUAL           reduce using rule 49 (primary -> FALSE .)
+    NEQUAL          reduce using rule 49 (primary -> FALSE .)
+    LTHANEQ         reduce using rule 49 (primary -> FALSE .)
+    LTHAN           reduce using rule 49 (primary -> FALSE .)
+    GTHANEQ         reduce using rule 49 (primary -> FALSE .)
+    GTHAN           reduce using rule 49 (primary -> FALSE .)
+    SEMICOLON       reduce using rule 49 (primary -> FALSE .)
+    DO              reduce using rule 49 (primary -> FALSE .)
+    THEN            reduce using rule 49 (primary -> FALSE .)
+    COMMA           reduce using rule 49 (primary -> FALSE .)
+    RPAREN          reduce using rule 49 (primary -> FALSE .)
+    RSQUARE         reduce using rule 49 (primary -> FALSE .)
+
+
+state 45
+
+    (35) SE -> lhs . EQUALS AE
+    (36) SE -> lhs . INCREMENT
+    (37) SE -> lhs . DECREMENT
+
+    EQUALS          shift and go to state 76
+    INCREMENT       shift and go to state 77
+    DECREMENT       shift and go to state 75
+
+
+state 46
+
+    (39) SE -> DECREMENT . lhs
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+
+    IDENTIFIER      shift and go to state 35
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+
+    primary                        shift and go to state 28
+    functionCall                   shift and go to state 38
+    lhs                            shift and go to state 78
+    arrayAccess                    shift and go to state 34
+
+state 47
+
+    (18) stmt -> SE . SEMICOLON
+
+    SEMICOLON       shift and go to state 79
+
+
+state 48
+
+    (16) formals -> type IDENTIFIER COMMA . formals
+    (16) formals -> . type IDENTIFIER COMMA formals
+    (17) formals -> . type IDENTIFIER
+    (10) type -> . INT
+    (11) type -> . BOOL
+    (12) type -> . VOID
+    (13) type -> . type LSQUARE RSQUARE
+
+    INT             shift and go to state 9
+    BOOL            shift and go to state 7
+    VOID            shift and go to state 4
+
+    type                           shift and go to state 22
+    formals                        shift and go to state 80
+
+state 49
+
+    (33) stmt -> DO stmt . WHILE AE SEMICOLON
+
+    WHILE           shift and go to state 81
+
+
+state 50
+
+    (55) arrayAccess -> primary LSQUARE . AE RSQUARE
+    (42) AE -> . AE binop AE
+    (43) AE -> . unop AE
+    (44) AE -> . primary
+    (45) AE -> . SE
+    (46) AE -> . newArray
+    (79) unop -> . MINUS
+    (80) unop -> . NOT
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (61) newArray -> . NEW type dimexpr dim_star
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+
+    MINUS           shift and go to state 55
+    NOT             shift and go to state 59
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+    IDENTIFIER      shift and go to state 57
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    NEW             shift and go to state 54
+
+    unop                           shift and go to state 51
+    AE                             shift and go to state 82
+    primary                        shift and go to state 52
+    functionCall                   shift and go to state 38
+    newArray                       shift and go to state 53
+    lhs                            shift and go to state 45
+    arrayAccess                    shift and go to state 56
+    SE                             shift and go to state 60
+
+state 51
+
+    (43) AE -> unop . AE
+    (42) AE -> . AE binop AE
+    (43) AE -> . unop AE
+    (44) AE -> . primary
+    (45) AE -> . SE
+    (46) AE -> . newArray
+    (79) unop -> . MINUS
+    (80) unop -> . NOT
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (61) newArray -> . NEW type dimexpr dim_star
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+
+    MINUS           shift and go to state 55
+    NOT             shift and go to state 59
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+    IDENTIFIER      shift and go to state 57
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    NEW             shift and go to state 54
+
+    unop                           shift and go to state 51
+    AE                             shift and go to state 83
+    primary                        shift and go to state 52
+    functionCall                   shift and go to state 38
+    newArray                       shift and go to state 53
+    lhs                            shift and go to state 45
+    arrayAccess                    shift and go to state 56
+    SE                             shift and go to state 60
+
+state 52
+
+    (44) AE -> primary .
+    (55) arrayAccess -> primary . LSQUARE AE RSQUARE
+
+    PLUS            reduce using rule 44 (AE -> primary .)
+    MINUS           reduce using rule 44 (AE -> primary .)
+    STAR            reduce using rule 44 (AE -> primary .)
+    DIV             reduce using rule 44 (AE -> primary .)
+    MOD             reduce using rule 44 (AE -> primary .)
+    AND             reduce using rule 44 (AE -> primary .)
+    OR              reduce using rule 44 (AE -> primary .)
+    EQUAL           reduce using rule 44 (AE -> primary .)
+    NEQUAL          reduce using rule 44 (AE -> primary .)
+    LTHANEQ         reduce using rule 44 (AE -> primary .)
+    LTHAN           reduce using rule 44 (AE -> primary .)
+    GTHANEQ         reduce using rule 44 (AE -> primary .)
+    GTHAN           reduce using rule 44 (AE -> primary .)
+    DO              reduce using rule 44 (AE -> primary .)
+    SEMICOLON       reduce using rule 44 (AE -> primary .)
+    RPAREN          reduce using rule 44 (AE -> primary .)
+    THEN            reduce using rule 44 (AE -> primary .)
+    RSQUARE         reduce using rule 44 (AE -> primary .)
+    COMMA           reduce using rule 44 (AE -> primary .)
+    LSQUARE         shift and go to state 50
+
+
+state 53
+
+    (46) AE -> newArray .
+
+    PLUS            reduce using rule 46 (AE -> newArray .)
+    MINUS           reduce using rule 46 (AE -> newArray .)
+    STAR            reduce using rule 46 (AE -> newArray .)
+    DIV             reduce using rule 46 (AE -> newArray .)
+    MOD             reduce using rule 46 (AE -> newArray .)
+    AND             reduce using rule 46 (AE -> newArray .)
+    OR              reduce using rule 46 (AE -> newArray .)
+    EQUAL           reduce using rule 46 (AE -> newArray .)
+    NEQUAL          reduce using rule 46 (AE -> newArray .)
+    LTHANEQ         reduce using rule 46 (AE -> newArray .)
+    LTHAN           reduce using rule 46 (AE -> newArray .)
+    GTHANEQ         reduce using rule 46 (AE -> newArray .)
+    GTHAN           reduce using rule 46 (AE -> newArray .)
+    DO              reduce using rule 46 (AE -> newArray .)
+    SEMICOLON       reduce using rule 46 (AE -> newArray .)
+    RPAREN          reduce using rule 46 (AE -> newArray .)
+    THEN            reduce using rule 46 (AE -> newArray .)
+    RSQUARE         reduce using rule 46 (AE -> newArray .)
+    COMMA           reduce using rule 46 (AE -> newArray .)
+
+
+state 54
+
+    (61) newArray -> NEW . type dimexpr dim_star
+    (10) type -> . INT
+    (11) type -> . BOOL
+    (12) type -> . VOID
+    (13) type -> . type LSQUARE RSQUARE
+
+    INT             shift and go to state 9
+    BOOL            shift and go to state 7
+    VOID            shift and go to state 4
+
+    type                           shift and go to state 84
+
+state 55
+
+    (79) unop -> MINUS .
+
+    MINUS           reduce using rule 79 (unop -> MINUS .)
+    NOT             reduce using rule 79 (unop -> MINUS .)
+    INTCONST        reduce using rule 79 (unop -> MINUS .)
+    TRUE            reduce using rule 79 (unop -> MINUS .)
+    FALSE           reduce using rule 79 (unop -> MINUS .)
+    INPUT           reduce using rule 79 (unop -> MINUS .)
+    LPAREN          reduce using rule 79 (unop -> MINUS .)
+    IDENTIFIER      reduce using rule 79 (unop -> MINUS .)
+    INCREMENT       reduce using rule 79 (unop -> MINUS .)
+    DECREMENT       reduce using rule 79 (unop -> MINUS .)
+    NEW             reduce using rule 79 (unop -> MINUS .)
+
+
+state 56
+
+    (53) primary -> arrayAccess .
+    (41) lhs -> arrayAccess .
+
+    LSQUARE         reduce using rule 53 (primary -> arrayAccess .)
+    PLUS            reduce using rule 53 (primary -> arrayAccess .)
+    MINUS           reduce using rule 53 (primary -> arrayAccess .)
+    STAR            reduce using rule 53 (primary -> arrayAccess .)
+    DIV             reduce using rule 53 (primary -> arrayAccess .)
+    MOD             reduce using rule 53 (primary -> arrayAccess .)
+    AND             reduce using rule 53 (primary -> arrayAccess .)
+    OR              reduce using rule 53 (primary -> arrayAccess .)
+    EQUAL           reduce using rule 53 (primary -> arrayAccess .)
+    NEQUAL          reduce using rule 53 (primary -> arrayAccess .)
+    LTHANEQ         reduce using rule 53 (primary -> arrayAccess .)
+    LTHAN           reduce using rule 53 (primary -> arrayAccess .)
+    GTHANEQ         reduce using rule 53 (primary -> arrayAccess .)
+    GTHAN           reduce using rule 53 (primary -> arrayAccess .)
+    SEMICOLON       reduce using rule 53 (primary -> arrayAccess .)
+    DO              reduce using rule 53 (primary -> arrayAccess .)
+    THEN            reduce using rule 53 (primary -> arrayAccess .)
+    COMMA           reduce using rule 53 (primary -> arrayAccess .)
+    RPAREN          reduce using rule 53 (primary -> arrayAccess .)
+    RSQUARE         reduce using rule 53 (primary -> arrayAccess .)
+    EQUALS          reduce using rule 41 (lhs -> arrayAccess .)
+    INCREMENT       reduce using rule 41 (lhs -> arrayAccess .)
+    DECREMENT       reduce using rule 41 (lhs -> arrayAccess .)
+
+
+state 57
+
+    (52) primary -> IDENTIFIER .
+    (56) functionCall -> IDENTIFIER . LPAREN argsOpt RPAREN
+    (40) lhs -> IDENTIFIER .
+
+    LSQUARE         reduce using rule 52 (primary -> IDENTIFIER .)
+    PLUS            reduce using rule 52 (primary -> IDENTIFIER .)
+    MINUS           reduce using rule 52 (primary -> IDENTIFIER .)
+    STAR            reduce using rule 52 (primary -> IDENTIFIER .)
+    DIV             reduce using rule 52 (primary -> IDENTIFIER .)
+    MOD             reduce using rule 52 (primary -> IDENTIFIER .)
+    AND             reduce using rule 52 (primary -> IDENTIFIER .)
+    OR              reduce using rule 52 (primary -> IDENTIFIER .)
+    EQUAL           reduce using rule 52 (primary -> IDENTIFIER .)
+    NEQUAL          reduce using rule 52 (primary -> IDENTIFIER .)
+    LTHANEQ         reduce using rule 52 (primary -> IDENTIFIER .)
+    LTHAN           reduce using rule 52 (primary -> IDENTIFIER .)
+    GTHANEQ         reduce using rule 52 (primary -> IDENTIFIER .)
+    GTHAN           reduce using rule 52 (primary -> IDENTIFIER .)
+    SEMICOLON       reduce using rule 52 (primary -> IDENTIFIER .)
+    DO              reduce using rule 52 (primary -> IDENTIFIER .)
+    THEN            reduce using rule 52 (primary -> IDENTIFIER .)
+    COMMA           reduce using rule 52 (primary -> IDENTIFIER .)
+    RPAREN          reduce using rule 52 (primary -> IDENTIFIER .)
+    RSQUARE         reduce using rule 52 (primary -> IDENTIFIER .)
+    LPAREN          shift and go to state 66
+    EQUALS          reduce using rule 40 (lhs -> IDENTIFIER .)
+    INCREMENT       reduce using rule 40 (lhs -> IDENTIFIER .)
+    DECREMENT       reduce using rule 40 (lhs -> IDENTIFIER .)
+
+
+state 58
+
+    (27) stmt -> WHILE AE . DO stmt
+    (42) AE -> AE . binop AE
+    (66) binop -> . PLUS
+    (67) binop -> . MINUS
+    (68) binop -> . STAR
+    (69) binop -> . DIV
+    (70) binop -> . MOD
+    (71) binop -> . AND
+    (72) binop -> . OR
+    (73) binop -> . EQUAL
+    (74) binop -> . NEQUAL
+    (75) binop -> . LTHANEQ
+    (76) binop -> . LTHAN
+    (77) binop -> . GTHANEQ
+    (78) binop -> . GTHAN
+
+    DO              shift and go to state 86
+    PLUS            shift and go to state 93
+    MINUS           shift and go to state 98
+    STAR            shift and go to state 95
+    DIV             shift and go to state 96
+    MOD             shift and go to state 99
+    AND             shift and go to state 85
+    OR              shift and go to state 91
+    EQUAL           shift and go to state 90
+    NEQUAL          shift and go to state 89
+    LTHANEQ         shift and go to state 94
+    LTHAN           shift and go to state 92
+    GTHANEQ         shift and go to state 97
+    GTHAN           shift and go to state 88
+
+    binop                          shift and go to state 87
+
+state 59
+
+    (80) unop -> NOT .
+
+    MINUS           reduce using rule 80 (unop -> NOT .)
+    NOT             reduce using rule 80 (unop -> NOT .)
+    INTCONST        reduce using rule 80 (unop -> NOT .)
+    TRUE            reduce using rule 80 (unop -> NOT .)
+    FALSE           reduce using rule 80 (unop -> NOT .)
+    INPUT           reduce using rule 80 (unop -> NOT .)
+    LPAREN          reduce using rule 80 (unop -> NOT .)
+    IDENTIFIER      reduce using rule 80 (unop -> NOT .)
+    INCREMENT       reduce using rule 80 (unop -> NOT .)
+    DECREMENT       reduce using rule 80 (unop -> NOT .)
+    NEW             reduce using rule 80 (unop -> NOT .)
+
+
+state 60
+
+    (45) AE -> SE .
+
+    PLUS            reduce using rule 45 (AE -> SE .)
+    MINUS           reduce using rule 45 (AE -> SE .)
+    STAR            reduce using rule 45 (AE -> SE .)
+    DIV             reduce using rule 45 (AE -> SE .)
+    MOD             reduce using rule 45 (AE -> SE .)
+    AND             reduce using rule 45 (AE -> SE .)
+    OR              reduce using rule 45 (AE -> SE .)
+    EQUAL           reduce using rule 45 (AE -> SE .)
+    NEQUAL          reduce using rule 45 (AE -> SE .)
+    LTHANEQ         reduce using rule 45 (AE -> SE .)
+    LTHAN           reduce using rule 45 (AE -> SE .)
+    GTHANEQ         reduce using rule 45 (AE -> SE .)
+    GTHAN           reduce using rule 45 (AE -> SE .)
+    DO              reduce using rule 45 (AE -> SE .)
+    SEMICOLON       reduce using rule 45 (AE -> SE .)
+    RPAREN          reduce using rule 45 (AE -> SE .)
+    THEN            reduce using rule 45 (AE -> SE .)
+    RSQUARE         reduce using rule 45 (AE -> SE .)
+    COMMA           reduce using rule 45 (AE -> SE .)
+
+
+state 61
+
+    (19) stmt -> PRINT LPAREN . AE RPAREN SEMICOLON
+    (42) AE -> . AE binop AE
+    (43) AE -> . unop AE
+    (44) AE -> . primary
+    (45) AE -> . SE
+    (46) AE -> . newArray
+    (79) unop -> . MINUS
+    (80) unop -> . NOT
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (61) newArray -> . NEW type dimexpr dim_star
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+
+    MINUS           shift and go to state 55
+    NOT             shift and go to state 59
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+    IDENTIFIER      shift and go to state 57
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    NEW             shift and go to state 54
+
+    unop                           shift and go to state 51
+    AE                             shift and go to state 100
+    primary                        shift and go to state 52
+    functionCall                   shift and go to state 38
+    newArray                       shift and go to state 53
+    lhs                            shift and go to state 45
+    arrayAccess                    shift and go to state 56
+    SE                             shift and go to state 60
+
+state 62
+
+    (34) stmt -> RETURN AEOpt . SEMICOLON
+
+    SEMICOLON       shift and go to state 101
+
+
+state 63
+
+    (32) AEOpt -> empty .
+
+    SEMICOLON       reduce using rule 32 (AEOpt -> empty .)
+
+
+state 64
+
+    (31) AEOpt -> AE .
+    (42) AE -> AE . binop AE
+    (66) binop -> . PLUS
+    (67) binop -> . MINUS
+    (68) binop -> . STAR
+    (69) binop -> . DIV
+    (70) binop -> . MOD
+    (71) binop -> . AND
+    (72) binop -> . OR
+    (73) binop -> . EQUAL
+    (74) binop -> . NEQUAL
+    (75) binop -> . LTHANEQ
+    (76) binop -> . LTHAN
+    (77) binop -> . GTHANEQ
+    (78) binop -> . GTHAN
+
+    SEMICOLON       reduce using rule 31 (AEOpt -> AE .)
+    PLUS            shift and go to state 93
+    MINUS           shift and go to state 98
+    STAR            shift and go to state 95
+    DIV             shift and go to state 96
+    MOD             shift and go to state 99
+    AND             shift and go to state 85
+    OR              shift and go to state 91
+    EQUAL           shift and go to state 90
+    NEQUAL          shift and go to state 89
+    LTHANEQ         shift and go to state 94
+    LTHAN           shift and go to state 92
+    GTHANEQ         shift and go to state 97
+    GTHAN           shift and go to state 88
+
+    binop                          shift and go to state 87
+
+state 65
+
+    (38) SE -> INCREMENT lhs .
+
+    COMMA           reduce using rule 38 (SE -> INCREMENT lhs .)
+    PLUS            reduce using rule 38 (SE -> INCREMENT lhs .)
+    MINUS           reduce using rule 38 (SE -> INCREMENT lhs .)
+    STAR            reduce using rule 38 (SE -> INCREMENT lhs .)
+    DIV             reduce using rule 38 (SE -> INCREMENT lhs .)
+    MOD             reduce using rule 38 (SE -> INCREMENT lhs .)
+    AND             reduce using rule 38 (SE -> INCREMENT lhs .)
+    OR              reduce using rule 38 (SE -> INCREMENT lhs .)
+    EQUAL           reduce using rule 38 (SE -> INCREMENT lhs .)
+    NEQUAL          reduce using rule 38 (SE -> INCREMENT lhs .)
+    LTHANEQ         reduce using rule 38 (SE -> INCREMENT lhs .)
+    LTHAN           reduce using rule 38 (SE -> INCREMENT lhs .)
+    GTHANEQ         reduce using rule 38 (SE -> INCREMENT lhs .)
+    GTHAN           reduce using rule 38 (SE -> INCREMENT lhs .)
+    RPAREN          reduce using rule 38 (SE -> INCREMENT lhs .)
+    SEMICOLON       reduce using rule 38 (SE -> INCREMENT lhs .)
+    DO              reduce using rule 38 (SE -> INCREMENT lhs .)
+    RSQUARE         reduce using rule 38 (SE -> INCREMENT lhs .)
+    THEN            reduce using rule 38 (SE -> INCREMENT lhs .)
+
+
+state 66
+
+    (56) functionCall -> IDENTIFIER LPAREN . argsOpt RPAREN
+    (57) argsOpt -> . args
+    (58) argsOpt -> . empty
+    (59) args -> . AE COMMA args
+    (60) args -> . AE
+    (81) empty -> .
+    (42) AE -> . AE binop AE
+    (43) AE -> . unop AE
+    (44) AE -> . primary
+    (45) AE -> . SE
+    (46) AE -> . newArray
+    (79) unop -> . MINUS
+    (80) unop -> . NOT
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (61) newArray -> . NEW type dimexpr dim_star
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+
+    RPAREN          reduce using rule 81 (empty -> .)
+    MINUS           shift and go to state 55
+    NOT             shift and go to state 59
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+    IDENTIFIER      shift and go to state 57
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    NEW             shift and go to state 54
+
+    unop                           shift and go to state 51
+    AE                             shift and go to state 103
+    args                           shift and go to state 104
+    primary                        shift and go to state 52
+    argsOpt                        shift and go to state 105
+    functionCall                   shift and go to state 38
+    SE                             shift and go to state 60
+    lhs                            shift and go to state 45
+    arrayAccess                    shift and go to state 56
+    empty                          shift and go to state 102
+    newArray                       shift and go to state 53
+
+state 67
+
+    (28) stmt -> FOR LPAREN . SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt
+    (29) SEOpt -> . SE
+    (30) SEOpt -> . empty
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (81) empty -> .
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    SEMICOLON       reduce using rule 81 (empty -> .)
+    IDENTIFIER      shift and go to state 35
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+
+    primary                        shift and go to state 28
+    functionCall                   shift and go to state 38
+    SEOpt                          shift and go to state 106
+    lhs                            shift and go to state 45
+    SE                             shift and go to state 108
+    arrayAccess                    shift and go to state 34
+    empty                          shift and go to state 107
+
+state 68
+
+    (51) primary -> LPAREN AE . RPAREN
+    (42) AE -> AE . binop AE
+    (66) binop -> . PLUS
+    (67) binop -> . MINUS
+    (68) binop -> . STAR
+    (69) binop -> . DIV
+    (70) binop -> . MOD
+    (71) binop -> . AND
+    (72) binop -> . OR
+    (73) binop -> . EQUAL
+    (74) binop -> . NEQUAL
+    (75) binop -> . LTHANEQ
+    (76) binop -> . LTHAN
+    (77) binop -> . GTHANEQ
+    (78) binop -> . GTHAN
+
+    RPAREN          shift and go to state 109
+    PLUS            shift and go to state 93
+    MINUS           shift and go to state 98
+    STAR            shift and go to state 95
+    DIV             shift and go to state 96
+    MOD             shift and go to state 99
+    AND             shift and go to state 85
+    OR              shift and go to state 91
+    EQUAL           shift and go to state 90
+    NEQUAL          shift and go to state 89
+    LTHANEQ         shift and go to state 94
+    LTHAN           shift and go to state 92
+    GTHANEQ         shift and go to state 97
+    GTHAN           shift and go to state 88
+
+    binop                          shift and go to state 87
+
+state 69
+
+    (50) primary -> INPUT LPAREN . RPAREN
+
+    RPAREN          shift and go to state 110
+
+
+state 70
+
+    (25) stmt -> IF AE . THEN stmt ELSE stmt
+    (26) stmt -> IF AE . THEN stmt
+    (42) AE -> AE . binop AE
+    (66) binop -> . PLUS
+    (67) binop -> . MINUS
+    (68) binop -> . STAR
+    (69) binop -> . DIV
+    (70) binop -> . MOD
+    (71) binop -> . AND
+    (72) binop -> . OR
+    (73) binop -> . EQUAL
+    (74) binop -> . NEQUAL
+    (75) binop -> . LTHANEQ
+    (76) binop -> . LTHAN
+    (77) binop -> . GTHANEQ
+    (78) binop -> . GTHAN
+
+    THEN            shift and go to state 111
+    PLUS            shift and go to state 93
+    MINUS           shift and go to state 98
+    STAR            shift and go to state 95
+    DIV             shift and go to state 96
+    MOD             shift and go to state 99
+    AND             shift and go to state 85
+    OR              shift and go to state 91
+    EQUAL           shift and go to state 90
+    NEQUAL          shift and go to state 89
+    LTHANEQ         shift and go to state 94
+    LTHAN           shift and go to state 92
+    GTHANEQ         shift and go to state 97
+    GTHAN           shift and go to state 88
+
+    binop                          shift and go to state 87
+
+state 71
+
+    (6) vardecl -> type . varlist SEMICOLON
+    (13) type -> type . LSQUARE RSQUARE
+    (14) varlist -> . IDENTIFIER COMMA varlist
+    (15) varlist -> . IDENTIFIER
+
+    LSQUARE         shift and go to state 12
+    IDENTIFIER      shift and go to state 20
+
+    varlist                        shift and go to state 13
+
+state 72
+
+    (21) vardecl_star -> vardecl . vardecl_star
+    (21) vardecl_star -> . vardecl vardecl_star
+    (22) vardecl_star -> . empty
+    (6) vardecl -> . type varlist SEMICOLON
+    (81) empty -> .
+    (10) type -> . INT
+    (11) type -> . BOOL
+    (12) type -> . VOID
+    (13) type -> . type LSQUARE RSQUARE
+
+    PRINT           reduce using rule 81 (empty -> .)
+    LBRACE          reduce using rule 81 (empty -> .)
+    IF              reduce using rule 81 (empty -> .)
+    WHILE           reduce using rule 81 (empty -> .)
+    FOR             reduce using rule 81 (empty -> .)
+    DO              reduce using rule 81 (empty -> .)
+    RETURN          reduce using rule 81 (empty -> .)
+    INCREMENT       reduce using rule 81 (empty -> .)
+    DECREMENT       reduce using rule 81 (empty -> .)
+    IDENTIFIER      reduce using rule 81 (empty -> .)
+    INTCONST        reduce using rule 81 (empty -> .)
+    TRUE            reduce using rule 81 (empty -> .)
+    FALSE           reduce using rule 81 (empty -> .)
+    INPUT           reduce using rule 81 (empty -> .)
+    LPAREN          reduce using rule 81 (empty -> .)
+    RBRACE          reduce using rule 81 (empty -> .)
+    INT             shift and go to state 9
+    BOOL            shift and go to state 7
+    VOID            shift and go to state 4
+
+    type                           shift and go to state 71
+    vardecl_star                   shift and go to state 112
+    vardecl                        shift and go to state 72
+    empty                          shift and go to state 74
+
+state 73
+
+    (20) stmt -> LBRACE vardecl_star . stmt_star RBRACE
+    (23) stmt_star -> . stmt stmt_star
+    (24) stmt_star -> . empty
+    (18) stmt -> . SE SEMICOLON
+    (19) stmt -> . PRINT LPAREN AE RPAREN SEMICOLON
+    (20) stmt -> . LBRACE vardecl_star stmt_star RBRACE
+    (25) stmt -> . IF AE THEN stmt ELSE stmt
+    (26) stmt -> . IF AE THEN stmt
+    (27) stmt -> . WHILE AE DO stmt
+    (28) stmt -> . FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt
+    (33) stmt -> . DO stmt WHILE AE SEMICOLON
+    (34) stmt -> . RETURN AEOpt SEMICOLON
+    (81) empty -> .
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+
+    PRINT           shift and go to state 30
+    LBRACE          shift and go to state 43
+    IF              shift and go to state 42
+    WHILE           shift and go to state 29
+    FOR             shift and go to state 36
+    DO              shift and go to state 27
+    RETURN          shift and go to state 31
+    RBRACE          reduce using rule 81 (empty -> .)
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    IDENTIFIER      shift and go to state 35
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+
+    primary                        shift and go to state 28
+    stmt                           shift and go to state 114
+    functionCall                   shift and go to state 38
+    lhs                            shift and go to state 45
+    SE                             shift and go to state 47
+    stmt_star                      shift and go to state 115
+    arrayAccess                    shift and go to state 34
+    empty                          shift and go to state 113
+
+state 74
+
+    (22) vardecl_star -> empty .
+
+    PRINT           reduce using rule 22 (vardecl_star -> empty .)
+    LBRACE          reduce using rule 22 (vardecl_star -> empty .)
+    IF              reduce using rule 22 (vardecl_star -> empty .)
+    WHILE           reduce using rule 22 (vardecl_star -> empty .)
+    FOR             reduce using rule 22 (vardecl_star -> empty .)
+    DO              reduce using rule 22 (vardecl_star -> empty .)
+    RETURN          reduce using rule 22 (vardecl_star -> empty .)
+    INCREMENT       reduce using rule 22 (vardecl_star -> empty .)
+    DECREMENT       reduce using rule 22 (vardecl_star -> empty .)
+    IDENTIFIER      reduce using rule 22 (vardecl_star -> empty .)
+    INTCONST        reduce using rule 22 (vardecl_star -> empty .)
+    TRUE            reduce using rule 22 (vardecl_star -> empty .)
+    FALSE           reduce using rule 22 (vardecl_star -> empty .)
+    INPUT           reduce using rule 22 (vardecl_star -> empty .)
+    LPAREN          reduce using rule 22 (vardecl_star -> empty .)
+    RBRACE          reduce using rule 22 (vardecl_star -> empty .)
+
+
+state 75
+
+    (37) SE -> lhs DECREMENT .
+
+    COMMA           reduce using rule 37 (SE -> lhs DECREMENT .)
+    PLUS            reduce using rule 37 (SE -> lhs DECREMENT .)
+    MINUS           reduce using rule 37 (SE -> lhs DECREMENT .)
+    STAR            reduce using rule 37 (SE -> lhs DECREMENT .)
+    DIV             reduce using rule 37 (SE -> lhs DECREMENT .)
+    MOD             reduce using rule 37 (SE -> lhs DECREMENT .)
+    AND             reduce using rule 37 (SE -> lhs DECREMENT .)
+    OR              reduce using rule 37 (SE -> lhs DECREMENT .)
+    EQUAL           reduce using rule 37 (SE -> lhs DECREMENT .)
+    NEQUAL          reduce using rule 37 (SE -> lhs DECREMENT .)
+    LTHANEQ         reduce using rule 37 (SE -> lhs DECREMENT .)
+    LTHAN           reduce using rule 37 (SE -> lhs DECREMENT .)
+    GTHANEQ         reduce using rule 37 (SE -> lhs DECREMENT .)
+    GTHAN           reduce using rule 37 (SE -> lhs DECREMENT .)
+    RPAREN          reduce using rule 37 (SE -> lhs DECREMENT .)
+    SEMICOLON       reduce using rule 37 (SE -> lhs DECREMENT .)
+    DO              reduce using rule 37 (SE -> lhs DECREMENT .)
+    RSQUARE         reduce using rule 37 (SE -> lhs DECREMENT .)
+    THEN            reduce using rule 37 (SE -> lhs DECREMENT .)
+
+
+state 76
+
+    (35) SE -> lhs EQUALS . AE
+    (42) AE -> . AE binop AE
+    (43) AE -> . unop AE
+    (44) AE -> . primary
+    (45) AE -> . SE
+    (46) AE -> . newArray
+    (79) unop -> . MINUS
+    (80) unop -> . NOT
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (61) newArray -> . NEW type dimexpr dim_star
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+
+    MINUS           shift and go to state 55
+    NOT             shift and go to state 59
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+    IDENTIFIER      shift and go to state 57
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    NEW             shift and go to state 54
+
+    unop                           shift and go to state 51
+    AE                             shift and go to state 116
+    primary                        shift and go to state 52
+    lhs                            shift and go to state 45
+    newArray                       shift and go to state 53
+    functionCall                   shift and go to state 38
+    arrayAccess                    shift and go to state 56
+    SE                             shift and go to state 60
+
+state 77
+
+    (36) SE -> lhs INCREMENT .
+
+    COMMA           reduce using rule 36 (SE -> lhs INCREMENT .)
+    PLUS            reduce using rule 36 (SE -> lhs INCREMENT .)
+    MINUS           reduce using rule 36 (SE -> lhs INCREMENT .)
+    STAR            reduce using rule 36 (SE -> lhs INCREMENT .)
+    DIV             reduce using rule 36 (SE -> lhs INCREMENT .)
+    MOD             reduce using rule 36 (SE -> lhs INCREMENT .)
+    AND             reduce using rule 36 (SE -> lhs INCREMENT .)
+    OR              reduce using rule 36 (SE -> lhs INCREMENT .)
+    EQUAL           reduce using rule 36 (SE -> lhs INCREMENT .)
+    NEQUAL          reduce using rule 36 (SE -> lhs INCREMENT .)
+    LTHANEQ         reduce using rule 36 (SE -> lhs INCREMENT .)
+    LTHAN           reduce using rule 36 (SE -> lhs INCREMENT .)
+    GTHANEQ         reduce using rule 36 (SE -> lhs INCREMENT .)
+    GTHAN           reduce using rule 36 (SE -> lhs INCREMENT .)
+    RPAREN          reduce using rule 36 (SE -> lhs INCREMENT .)
+    SEMICOLON       reduce using rule 36 (SE -> lhs INCREMENT .)
+    DO              reduce using rule 36 (SE -> lhs INCREMENT .)
+    RSQUARE         reduce using rule 36 (SE -> lhs INCREMENT .)
+    THEN            reduce using rule 36 (SE -> lhs INCREMENT .)
+
+
+state 78
+
+    (39) SE -> DECREMENT lhs .
+
+    COMMA           reduce using rule 39 (SE -> DECREMENT lhs .)
+    PLUS            reduce using rule 39 (SE -> DECREMENT lhs .)
+    MINUS           reduce using rule 39 (SE -> DECREMENT lhs .)
+    STAR            reduce using rule 39 (SE -> DECREMENT lhs .)
+    DIV             reduce using rule 39 (SE -> DECREMENT lhs .)
+    MOD             reduce using rule 39 (SE -> DECREMENT lhs .)
+    AND             reduce using rule 39 (SE -> DECREMENT lhs .)
+    OR              reduce using rule 39 (SE -> DECREMENT lhs .)
+    EQUAL           reduce using rule 39 (SE -> DECREMENT lhs .)
+    NEQUAL          reduce using rule 39 (SE -> DECREMENT lhs .)
+    LTHANEQ         reduce using rule 39 (SE -> DECREMENT lhs .)
+    LTHAN           reduce using rule 39 (SE -> DECREMENT lhs .)
+    GTHANEQ         reduce using rule 39 (SE -> DECREMENT lhs .)
+    GTHAN           reduce using rule 39 (SE -> DECREMENT lhs .)
+    RPAREN          reduce using rule 39 (SE -> DECREMENT lhs .)
+    SEMICOLON       reduce using rule 39 (SE -> DECREMENT lhs .)
+    DO              reduce using rule 39 (SE -> DECREMENT lhs .)
+    RSQUARE         reduce using rule 39 (SE -> DECREMENT lhs .)
+    THEN            reduce using rule 39 (SE -> DECREMENT lhs .)
+
+
+state 79
+
+    (18) stmt -> SE SEMICOLON .
+
+    INT             reduce using rule 18 (stmt -> SE SEMICOLON .)
+    BOOL            reduce using rule 18 (stmt -> SE SEMICOLON .)
+    VOID            reduce using rule 18 (stmt -> SE SEMICOLON .)
+    $end            reduce using rule 18 (stmt -> SE SEMICOLON .)
+    PRINT           reduce using rule 18 (stmt -> SE SEMICOLON .)
+    LBRACE          reduce using rule 18 (stmt -> SE SEMICOLON .)
+    IF              reduce using rule 18 (stmt -> SE SEMICOLON .)
+    WHILE           reduce using rule 18 (stmt -> SE SEMICOLON .)
+    FOR             reduce using rule 18 (stmt -> SE SEMICOLON .)
+    DO              reduce using rule 18 (stmt -> SE SEMICOLON .)
+    RETURN          reduce using rule 18 (stmt -> SE SEMICOLON .)
+    INCREMENT       reduce using rule 18 (stmt -> SE SEMICOLON .)
+    DECREMENT       reduce using rule 18 (stmt -> SE SEMICOLON .)
+    IDENTIFIER      reduce using rule 18 (stmt -> SE SEMICOLON .)
+    INTCONST        reduce using rule 18 (stmt -> SE SEMICOLON .)
+    TRUE            reduce using rule 18 (stmt -> SE SEMICOLON .)
+    FALSE           reduce using rule 18 (stmt -> SE SEMICOLON .)
+    INPUT           reduce using rule 18 (stmt -> SE SEMICOLON .)
+    LPAREN          reduce using rule 18 (stmt -> SE SEMICOLON .)
+    RBRACE          reduce using rule 18 (stmt -> SE SEMICOLON .)
+    ELSE            reduce using rule 18 (stmt -> SE SEMICOLON .)
+
+
+state 80
+
+    (16) formals -> type IDENTIFIER COMMA formals .
+
+    RPAREN          reduce using rule 16 (formals -> type IDENTIFIER COMMA formals .)
+
+
+state 81
+
+    (33) stmt -> DO stmt WHILE . AE SEMICOLON
+    (42) AE -> . AE binop AE
+    (43) AE -> . unop AE
+    (44) AE -> . primary
+    (45) AE -> . SE
+    (46) AE -> . newArray
+    (79) unop -> . MINUS
+    (80) unop -> . NOT
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (61) newArray -> . NEW type dimexpr dim_star
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+
+    MINUS           shift and go to state 55
+    NOT             shift and go to state 59
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+    IDENTIFIER      shift and go to state 57
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    NEW             shift and go to state 54
+
+    unop                           shift and go to state 51
+    AE                             shift and go to state 117
+    primary                        shift and go to state 52
+    functionCall                   shift and go to state 38
+    newArray                       shift and go to state 53
+    lhs                            shift and go to state 45
+    arrayAccess                    shift and go to state 56
+    SE                             shift and go to state 60
+
+state 82
+
+    (55) arrayAccess -> primary LSQUARE AE . RSQUARE
+    (42) AE -> AE . binop AE
+    (66) binop -> . PLUS
+    (67) binop -> . MINUS
+    (68) binop -> . STAR
+    (69) binop -> . DIV
+    (70) binop -> . MOD
+    (71) binop -> . AND
+    (72) binop -> . OR
+    (73) binop -> . EQUAL
+    (74) binop -> . NEQUAL
+    (75) binop -> . LTHANEQ
+    (76) binop -> . LTHAN
+    (77) binop -> . GTHANEQ
+    (78) binop -> . GTHAN
+
+    RSQUARE         shift and go to state 118
+    PLUS            shift and go to state 93
+    MINUS           shift and go to state 98
+    STAR            shift and go to state 95
+    DIV             shift and go to state 96
+    MOD             shift and go to state 99
+    AND             shift and go to state 85
+    OR              shift and go to state 91
+    EQUAL           shift and go to state 90
+    NEQUAL          shift and go to state 89
+    LTHANEQ         shift and go to state 94
+    LTHAN           shift and go to state 92
+    GTHANEQ         shift and go to state 97
+    GTHAN           shift and go to state 88
+
+    binop                          shift and go to state 87
+
+state 83
+
+    (43) AE -> unop AE .
+    (42) AE -> AE . binop AE
+    (66) binop -> . PLUS
+    (67) binop -> . MINUS
+    (68) binop -> . STAR
+    (69) binop -> . DIV
+    (70) binop -> . MOD
+    (71) binop -> . AND
+    (72) binop -> . OR
+    (73) binop -> . EQUAL
+    (74) binop -> . NEQUAL
+    (75) binop -> . LTHANEQ
+    (76) binop -> . LTHAN
+    (77) binop -> . GTHANEQ
+    (78) binop -> . GTHAN
+
+    PLUS            reduce using rule 43 (AE -> unop AE .)
+    MINUS           reduce using rule 43 (AE -> unop AE .)
+    STAR            reduce using rule 43 (AE -> unop AE .)
+    DIV             reduce using rule 43 (AE -> unop AE .)
+    MOD             reduce using rule 43 (AE -> unop AE .)
+    AND             reduce using rule 43 (AE -> unop AE .)
+    OR              reduce using rule 43 (AE -> unop AE .)
+    EQUAL           reduce using rule 43 (AE -> unop AE .)
+    NEQUAL          reduce using rule 43 (AE -> unop AE .)
+    LTHANEQ         reduce using rule 43 (AE -> unop AE .)
+    LTHAN           reduce using rule 43 (AE -> unop AE .)
+    GTHANEQ         reduce using rule 43 (AE -> unop AE .)
+    GTHAN           reduce using rule 43 (AE -> unop AE .)
+    DO              reduce using rule 43 (AE -> unop AE .)
+    SEMICOLON       reduce using rule 43 (AE -> unop AE .)
+    RPAREN          reduce using rule 43 (AE -> unop AE .)
+    THEN            reduce using rule 43 (AE -> unop AE .)
+    RSQUARE         reduce using rule 43 (AE -> unop AE .)
+    COMMA           reduce using rule 43 (AE -> unop AE .)
+
+  ! PLUS            [ shift and go to state 93 ]
+  ! MINUS           [ shift and go to state 98 ]
+  ! STAR            [ shift and go to state 95 ]
+  ! DIV             [ shift and go to state 96 ]
+  ! MOD             [ shift and go to state 99 ]
+  ! AND             [ shift and go to state 85 ]
+  ! OR              [ shift and go to state 91 ]
+  ! EQUAL           [ shift and go to state 90 ]
+  ! NEQUAL          [ shift and go to state 89 ]
+  ! LTHANEQ         [ shift and go to state 94 ]
+  ! LTHAN           [ shift and go to state 92 ]
+  ! GTHANEQ         [ shift and go to state 97 ]
+  ! GTHAN           [ shift and go to state 88 ]
+
+    binop                          shift and go to state 87
+
+state 84
+
+    (61) newArray -> NEW type . dimexpr dim_star
+    (13) type -> type . LSQUARE RSQUARE
+    (64) dimexpr -> . LSQUARE AE RSQUARE
+
+    LSQUARE         shift and go to state 120
+
+    dimexpr                        shift and go to state 119
+
+state 85
+
+    (71) binop -> AND .
+
+    MINUS           reduce using rule 71 (binop -> AND .)
+    NOT             reduce using rule 71 (binop -> AND .)
+    INTCONST        reduce using rule 71 (binop -> AND .)
+    TRUE            reduce using rule 71 (binop -> AND .)
+    FALSE           reduce using rule 71 (binop -> AND .)
+    INPUT           reduce using rule 71 (binop -> AND .)
+    LPAREN          reduce using rule 71 (binop -> AND .)
+    IDENTIFIER      reduce using rule 71 (binop -> AND .)
+    INCREMENT       reduce using rule 71 (binop -> AND .)
+    DECREMENT       reduce using rule 71 (binop -> AND .)
+    NEW             reduce using rule 71 (binop -> AND .)
+
+
+state 86
+
+    (27) stmt -> WHILE AE DO . stmt
+    (18) stmt -> . SE SEMICOLON
+    (19) stmt -> . PRINT LPAREN AE RPAREN SEMICOLON
+    (20) stmt -> . LBRACE vardecl_star stmt_star RBRACE
+    (25) stmt -> . IF AE THEN stmt ELSE stmt
+    (26) stmt -> . IF AE THEN stmt
+    (27) stmt -> . WHILE AE DO stmt
+    (28) stmt -> . FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt
+    (33) stmt -> . DO stmt WHILE AE SEMICOLON
+    (34) stmt -> . RETURN AEOpt SEMICOLON
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+
+    PRINT           shift and go to state 30
+    LBRACE          shift and go to state 43
+    IF              shift and go to state 42
+    WHILE           shift and go to state 29
+    FOR             shift and go to state 36
+    DO              shift and go to state 27
+    RETURN          shift and go to state 31
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    IDENTIFIER      shift and go to state 35
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+
+    primary                        shift and go to state 28
+    stmt                           shift and go to state 121
+    functionCall                   shift and go to state 38
+    lhs                            shift and go to state 45
+    arrayAccess                    shift and go to state 34
+    SE                             shift and go to state 47
+
+state 87
+
+    (42) AE -> AE binop . AE
+    (42) AE -> . AE binop AE
+    (43) AE -> . unop AE
+    (44) AE -> . primary
+    (45) AE -> . SE
+    (46) AE -> . newArray
+    (79) unop -> . MINUS
+    (80) unop -> . NOT
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (61) newArray -> . NEW type dimexpr dim_star
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+
+    MINUS           shift and go to state 55
+    NOT             shift and go to state 59
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+    IDENTIFIER      shift and go to state 57
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    NEW             shift and go to state 54
+
+    unop                           shift and go to state 51
+    AE                             shift and go to state 122
+    primary                        shift and go to state 52
+    functionCall                   shift and go to state 38
+    newArray                       shift and go to state 53
+    lhs                            shift and go to state 45
+    arrayAccess                    shift and go to state 56
+    SE                             shift and go to state 60
+
+state 88
+
+    (78) binop -> GTHAN .
+
+    MINUS           reduce using rule 78 (binop -> GTHAN .)
+    NOT             reduce using rule 78 (binop -> GTHAN .)
+    INTCONST        reduce using rule 78 (binop -> GTHAN .)
+    TRUE            reduce using rule 78 (binop -> GTHAN .)
+    FALSE           reduce using rule 78 (binop -> GTHAN .)
+    INPUT           reduce using rule 78 (binop -> GTHAN .)
+    LPAREN          reduce using rule 78 (binop -> GTHAN .)
+    IDENTIFIER      reduce using rule 78 (binop -> GTHAN .)
+    INCREMENT       reduce using rule 78 (binop -> GTHAN .)
+    DECREMENT       reduce using rule 78 (binop -> GTHAN .)
+    NEW             reduce using rule 78 (binop -> GTHAN .)
+
+
+state 89
+
+    (74) binop -> NEQUAL .
+
+    MINUS           reduce using rule 74 (binop -> NEQUAL .)
+    NOT             reduce using rule 74 (binop -> NEQUAL .)
+    INTCONST        reduce using rule 74 (binop -> NEQUAL .)
+    TRUE            reduce using rule 74 (binop -> NEQUAL .)
+    FALSE           reduce using rule 74 (binop -> NEQUAL .)
+    INPUT           reduce using rule 74 (binop -> NEQUAL .)
+    LPAREN          reduce using rule 74 (binop -> NEQUAL .)
+    IDENTIFIER      reduce using rule 74 (binop -> NEQUAL .)
+    INCREMENT       reduce using rule 74 (binop -> NEQUAL .)
+    DECREMENT       reduce using rule 74 (binop -> NEQUAL .)
+    NEW             reduce using rule 74 (binop -> NEQUAL .)
+
+
+state 90
+
+    (73) binop -> EQUAL .
+
+    MINUS           reduce using rule 73 (binop -> EQUAL .)
+    NOT             reduce using rule 73 (binop -> EQUAL .)
+    INTCONST        reduce using rule 73 (binop -> EQUAL .)
+    TRUE            reduce using rule 73 (binop -> EQUAL .)
+    FALSE           reduce using rule 73 (binop -> EQUAL .)
+    INPUT           reduce using rule 73 (binop -> EQUAL .)
+    LPAREN          reduce using rule 73 (binop -> EQUAL .)
+    IDENTIFIER      reduce using rule 73 (binop -> EQUAL .)
+    INCREMENT       reduce using rule 73 (binop -> EQUAL .)
+    DECREMENT       reduce using rule 73 (binop -> EQUAL .)
+    NEW             reduce using rule 73 (binop -> EQUAL .)
+
+
+state 91
+
+    (72) binop -> OR .
+
+    MINUS           reduce using rule 72 (binop -> OR .)
+    NOT             reduce using rule 72 (binop -> OR .)
+    INTCONST        reduce using rule 72 (binop -> OR .)
+    TRUE            reduce using rule 72 (binop -> OR .)
+    FALSE           reduce using rule 72 (binop -> OR .)
+    INPUT           reduce using rule 72 (binop -> OR .)
+    LPAREN          reduce using rule 72 (binop -> OR .)
+    IDENTIFIER      reduce using rule 72 (binop -> OR .)
+    INCREMENT       reduce using rule 72 (binop -> OR .)
+    DECREMENT       reduce using rule 72 (binop -> OR .)
+    NEW             reduce using rule 72 (binop -> OR .)
+
+
+state 92
+
+    (76) binop -> LTHAN .
+
+    MINUS           reduce using rule 76 (binop -> LTHAN .)
+    NOT             reduce using rule 76 (binop -> LTHAN .)
+    INTCONST        reduce using rule 76 (binop -> LTHAN .)
+    TRUE            reduce using rule 76 (binop -> LTHAN .)
+    FALSE           reduce using rule 76 (binop -> LTHAN .)
+    INPUT           reduce using rule 76 (binop -> LTHAN .)
+    LPAREN          reduce using rule 76 (binop -> LTHAN .)
+    IDENTIFIER      reduce using rule 76 (binop -> LTHAN .)
+    INCREMENT       reduce using rule 76 (binop -> LTHAN .)
+    DECREMENT       reduce using rule 76 (binop -> LTHAN .)
+    NEW             reduce using rule 76 (binop -> LTHAN .)
+
+
+state 93
+
+    (66) binop -> PLUS .
+
+    MINUS           reduce using rule 66 (binop -> PLUS .)
+    NOT             reduce using rule 66 (binop -> PLUS .)
+    INTCONST        reduce using rule 66 (binop -> PLUS .)
+    TRUE            reduce using rule 66 (binop -> PLUS .)
+    FALSE           reduce using rule 66 (binop -> PLUS .)
+    INPUT           reduce using rule 66 (binop -> PLUS .)
+    LPAREN          reduce using rule 66 (binop -> PLUS .)
+    IDENTIFIER      reduce using rule 66 (binop -> PLUS .)
+    INCREMENT       reduce using rule 66 (binop -> PLUS .)
+    DECREMENT       reduce using rule 66 (binop -> PLUS .)
+    NEW             reduce using rule 66 (binop -> PLUS .)
+
+
+state 94
+
+    (75) binop -> LTHANEQ .
+
+    MINUS           reduce using rule 75 (binop -> LTHANEQ .)
+    NOT             reduce using rule 75 (binop -> LTHANEQ .)
+    INTCONST        reduce using rule 75 (binop -> LTHANEQ .)
+    TRUE            reduce using rule 75 (binop -> LTHANEQ .)
+    FALSE           reduce using rule 75 (binop -> LTHANEQ .)
+    INPUT           reduce using rule 75 (binop -> LTHANEQ .)
+    LPAREN          reduce using rule 75 (binop -> LTHANEQ .)
+    IDENTIFIER      reduce using rule 75 (binop -> LTHANEQ .)
+    INCREMENT       reduce using rule 75 (binop -> LTHANEQ .)
+    DECREMENT       reduce using rule 75 (binop -> LTHANEQ .)
+    NEW             reduce using rule 75 (binop -> LTHANEQ .)
+
+
+state 95
+
+    (68) binop -> STAR .
+
+    MINUS           reduce using rule 68 (binop -> STAR .)
+    NOT             reduce using rule 68 (binop -> STAR .)
+    INTCONST        reduce using rule 68 (binop -> STAR .)
+    TRUE            reduce using rule 68 (binop -> STAR .)
+    FALSE           reduce using rule 68 (binop -> STAR .)
+    INPUT           reduce using rule 68 (binop -> STAR .)
+    LPAREN          reduce using rule 68 (binop -> STAR .)
+    IDENTIFIER      reduce using rule 68 (binop -> STAR .)
+    INCREMENT       reduce using rule 68 (binop -> STAR .)
+    DECREMENT       reduce using rule 68 (binop -> STAR .)
+    NEW             reduce using rule 68 (binop -> STAR .)
+
+
+state 96
+
+    (69) binop -> DIV .
+
+    MINUS           reduce using rule 69 (binop -> DIV .)
+    NOT             reduce using rule 69 (binop -> DIV .)
+    INTCONST        reduce using rule 69 (binop -> DIV .)
+    TRUE            reduce using rule 69 (binop -> DIV .)
+    FALSE           reduce using rule 69 (binop -> DIV .)
+    INPUT           reduce using rule 69 (binop -> DIV .)
+    LPAREN          reduce using rule 69 (binop -> DIV .)
+    IDENTIFIER      reduce using rule 69 (binop -> DIV .)
+    INCREMENT       reduce using rule 69 (binop -> DIV .)
+    DECREMENT       reduce using rule 69 (binop -> DIV .)
+    NEW             reduce using rule 69 (binop -> DIV .)
+
+
+state 97
+
+    (77) binop -> GTHANEQ .
+
+    MINUS           reduce using rule 77 (binop -> GTHANEQ .)
+    NOT             reduce using rule 77 (binop -> GTHANEQ .)
+    INTCONST        reduce using rule 77 (binop -> GTHANEQ .)
+    TRUE            reduce using rule 77 (binop -> GTHANEQ .)
+    FALSE           reduce using rule 77 (binop -> GTHANEQ .)
+    INPUT           reduce using rule 77 (binop -> GTHANEQ .)
+    LPAREN          reduce using rule 77 (binop -> GTHANEQ .)
+    IDENTIFIER      reduce using rule 77 (binop -> GTHANEQ .)
+    INCREMENT       reduce using rule 77 (binop -> GTHANEQ .)
+    DECREMENT       reduce using rule 77 (binop -> GTHANEQ .)
+    NEW             reduce using rule 77 (binop -> GTHANEQ .)
+
+
+state 98
+
+    (67) binop -> MINUS .
+
+    MINUS           reduce using rule 67 (binop -> MINUS .)
+    NOT             reduce using rule 67 (binop -> MINUS .)
+    INTCONST        reduce using rule 67 (binop -> MINUS .)
+    TRUE            reduce using rule 67 (binop -> MINUS .)
+    FALSE           reduce using rule 67 (binop -> MINUS .)
+    INPUT           reduce using rule 67 (binop -> MINUS .)
+    LPAREN          reduce using rule 67 (binop -> MINUS .)
+    IDENTIFIER      reduce using rule 67 (binop -> MINUS .)
+    INCREMENT       reduce using rule 67 (binop -> MINUS .)
+    DECREMENT       reduce using rule 67 (binop -> MINUS .)
+    NEW             reduce using rule 67 (binop -> MINUS .)
+
+
+state 99
+
+    (70) binop -> MOD .
+
+    MINUS           reduce using rule 70 (binop -> MOD .)
+    NOT             reduce using rule 70 (binop -> MOD .)
+    INTCONST        reduce using rule 70 (binop -> MOD .)
+    TRUE            reduce using rule 70 (binop -> MOD .)
+    FALSE           reduce using rule 70 (binop -> MOD .)
+    INPUT           reduce using rule 70 (binop -> MOD .)
+    LPAREN          reduce using rule 70 (binop -> MOD .)
+    IDENTIFIER      reduce using rule 70 (binop -> MOD .)
+    INCREMENT       reduce using rule 70 (binop -> MOD .)
+    DECREMENT       reduce using rule 70 (binop -> MOD .)
+    NEW             reduce using rule 70 (binop -> MOD .)
+
+
+state 100
+
+    (19) stmt -> PRINT LPAREN AE . RPAREN SEMICOLON
+    (42) AE -> AE . binop AE
+    (66) binop -> . PLUS
+    (67) binop -> . MINUS
+    (68) binop -> . STAR
+    (69) binop -> . DIV
+    (70) binop -> . MOD
+    (71) binop -> . AND
+    (72) binop -> . OR
+    (73) binop -> . EQUAL
+    (74) binop -> . NEQUAL
+    (75) binop -> . LTHANEQ
+    (76) binop -> . LTHAN
+    (77) binop -> . GTHANEQ
+    (78) binop -> . GTHAN
+
+    RPAREN          shift and go to state 123
+    PLUS            shift and go to state 93
+    MINUS           shift and go to state 98
+    STAR            shift and go to state 95
+    DIV             shift and go to state 96
+    MOD             shift and go to state 99
+    AND             shift and go to state 85
+    OR              shift and go to state 91
+    EQUAL           shift and go to state 90
+    NEQUAL          shift and go to state 89
+    LTHANEQ         shift and go to state 94
+    LTHAN           shift and go to state 92
+    GTHANEQ         shift and go to state 97
+    GTHAN           shift and go to state 88
+
+    binop                          shift and go to state 87
+
+state 101
+
+    (34) stmt -> RETURN AEOpt SEMICOLON .
+
+    INT             reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    BOOL            reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    VOID            reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    $end            reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    PRINT           reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    LBRACE          reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    IF              reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    WHILE           reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    FOR             reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    DO              reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    RETURN          reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    INCREMENT       reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    DECREMENT       reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    IDENTIFIER      reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    INTCONST        reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    TRUE            reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    FALSE           reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    INPUT           reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    LPAREN          reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    RBRACE          reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+    ELSE            reduce using rule 34 (stmt -> RETURN AEOpt SEMICOLON .)
+
+
+state 102
+
+    (58) argsOpt -> empty .
+
+    RPAREN          reduce using rule 58 (argsOpt -> empty .)
+
+
+state 103
+
+    (59) args -> AE . COMMA args
+    (60) args -> AE .
+    (42) AE -> AE . binop AE
+    (66) binop -> . PLUS
+    (67) binop -> . MINUS
+    (68) binop -> . STAR
+    (69) binop -> . DIV
+    (70) binop -> . MOD
+    (71) binop -> . AND
+    (72) binop -> . OR
+    (73) binop -> . EQUAL
+    (74) binop -> . NEQUAL
+    (75) binop -> . LTHANEQ
+    (76) binop -> . LTHAN
+    (77) binop -> . GTHANEQ
+    (78) binop -> . GTHAN
+
+    COMMA           shift and go to state 124
+    RPAREN          reduce using rule 60 (args -> AE .)
+    PLUS            shift and go to state 93
+    MINUS           shift and go to state 98
+    STAR            shift and go to state 95
+    DIV             shift and go to state 96
+    MOD             shift and go to state 99
+    AND             shift and go to state 85
+    OR              shift and go to state 91
+    EQUAL           shift and go to state 90
+    NEQUAL          shift and go to state 89
+    LTHANEQ         shift and go to state 94
+    LTHAN           shift and go to state 92
+    GTHANEQ         shift and go to state 97
+    GTHAN           shift and go to state 88
+
+    binop                          shift and go to state 87
+
+state 104
+
+    (57) argsOpt -> args .
+
+    RPAREN          reduce using rule 57 (argsOpt -> args .)
+
+
+state 105
+
+    (56) functionCall -> IDENTIFIER LPAREN argsOpt . RPAREN
+
+    RPAREN          shift and go to state 125
+
+
+state 106
+
+    (28) stmt -> FOR LPAREN SEOpt . SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt
+
+    SEMICOLON       shift and go to state 126
+
+
+state 107
+
+    (30) SEOpt -> empty .
+
+    RPAREN          reduce using rule 30 (SEOpt -> empty .)
+    SEMICOLON       reduce using rule 30 (SEOpt -> empty .)
+
+
+state 108
+
+    (29) SEOpt -> SE .
+
+    RPAREN          reduce using rule 29 (SEOpt -> SE .)
+    SEMICOLON       reduce using rule 29 (SEOpt -> SE .)
+
+
+state 109
+
+    (51) primary -> LPAREN AE RPAREN .
+
+    LSQUARE         reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+    PLUS            reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+    MINUS           reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+    STAR            reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+    DIV             reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+    MOD             reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+    AND             reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+    OR              reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+    EQUAL           reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+    NEQUAL          reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+    LTHANEQ         reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+    LTHAN           reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+    GTHANEQ         reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+    GTHAN           reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+    SEMICOLON       reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+    DO              reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+    THEN            reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+    COMMA           reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+    RPAREN          reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+    RSQUARE         reduce using rule 51 (primary -> LPAREN AE RPAREN .)
+
+
+state 110
+
+    (50) primary -> INPUT LPAREN RPAREN .
+
+    LSQUARE         reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+    PLUS            reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+    MINUS           reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+    STAR            reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+    DIV             reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+    MOD             reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+    AND             reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+    OR              reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+    EQUAL           reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+    NEQUAL          reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+    LTHANEQ         reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+    LTHAN           reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+    GTHANEQ         reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+    GTHAN           reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+    SEMICOLON       reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+    DO              reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+    THEN            reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+    COMMA           reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+    RPAREN          reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+    RSQUARE         reduce using rule 50 (primary -> INPUT LPAREN RPAREN .)
+
+
+state 111
+
+    (25) stmt -> IF AE THEN . stmt ELSE stmt
+    (26) stmt -> IF AE THEN . stmt
+    (18) stmt -> . SE SEMICOLON
+    (19) stmt -> . PRINT LPAREN AE RPAREN SEMICOLON
+    (20) stmt -> . LBRACE vardecl_star stmt_star RBRACE
+    (25) stmt -> . IF AE THEN stmt ELSE stmt
+    (26) stmt -> . IF AE THEN stmt
+    (27) stmt -> . WHILE AE DO stmt
+    (28) stmt -> . FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt
+    (33) stmt -> . DO stmt WHILE AE SEMICOLON
+    (34) stmt -> . RETURN AEOpt SEMICOLON
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+
+    PRINT           shift and go to state 30
+    LBRACE          shift and go to state 43
+    IF              shift and go to state 42
+    WHILE           shift and go to state 29
+    FOR             shift and go to state 36
+    DO              shift and go to state 27
+    RETURN          shift and go to state 31
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    IDENTIFIER      shift and go to state 35
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+
+    primary                        shift and go to state 28
+    stmt                           shift and go to state 127
+    functionCall                   shift and go to state 38
+    lhs                            shift and go to state 45
+    arrayAccess                    shift and go to state 34
+    SE                             shift and go to state 47
+
+state 112
+
+    (21) vardecl_star -> vardecl vardecl_star .
+
+    PRINT           reduce using rule 21 (vardecl_star -> vardecl vardecl_star .)
+    LBRACE          reduce using rule 21 (vardecl_star -> vardecl vardecl_star .)
+    IF              reduce using rule 21 (vardecl_star -> vardecl vardecl_star .)
+    WHILE           reduce using rule 21 (vardecl_star -> vardecl vardecl_star .)
+    FOR             reduce using rule 21 (vardecl_star -> vardecl vardecl_star .)
+    DO              reduce using rule 21 (vardecl_star -> vardecl vardecl_star .)
+    RETURN          reduce using rule 21 (vardecl_star -> vardecl vardecl_star .)
+    INCREMENT       reduce using rule 21 (vardecl_star -> vardecl vardecl_star .)
+    DECREMENT       reduce using rule 21 (vardecl_star -> vardecl vardecl_star .)
+    IDENTIFIER      reduce using rule 21 (vardecl_star -> vardecl vardecl_star .)
+    INTCONST        reduce using rule 21 (vardecl_star -> vardecl vardecl_star .)
+    TRUE            reduce using rule 21 (vardecl_star -> vardecl vardecl_star .)
+    FALSE           reduce using rule 21 (vardecl_star -> vardecl vardecl_star .)
+    INPUT           reduce using rule 21 (vardecl_star -> vardecl vardecl_star .)
+    LPAREN          reduce using rule 21 (vardecl_star -> vardecl vardecl_star .)
+    RBRACE          reduce using rule 21 (vardecl_star -> vardecl vardecl_star .)
+
+
+state 113
+
+    (24) stmt_star -> empty .
+
+    RBRACE          reduce using rule 24 (stmt_star -> empty .)
+
+
+state 114
+
+    (23) stmt_star -> stmt . stmt_star
+    (23) stmt_star -> . stmt stmt_star
+    (24) stmt_star -> . empty
+    (18) stmt -> . SE SEMICOLON
+    (19) stmt -> . PRINT LPAREN AE RPAREN SEMICOLON
+    (20) stmt -> . LBRACE vardecl_star stmt_star RBRACE
+    (25) stmt -> . IF AE THEN stmt ELSE stmt
+    (26) stmt -> . IF AE THEN stmt
+    (27) stmt -> . WHILE AE DO stmt
+    (28) stmt -> . FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt
+    (33) stmt -> . DO stmt WHILE AE SEMICOLON
+    (34) stmt -> . RETURN AEOpt SEMICOLON
+    (81) empty -> .
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+
+    PRINT           shift and go to state 30
+    LBRACE          shift and go to state 43
+    IF              shift and go to state 42
+    WHILE           shift and go to state 29
+    FOR             shift and go to state 36
+    DO              shift and go to state 27
+    RETURN          shift and go to state 31
+    RBRACE          reduce using rule 81 (empty -> .)
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    IDENTIFIER      shift and go to state 35
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+
+    primary                        shift and go to state 28
+    stmt                           shift and go to state 114
+    functionCall                   shift and go to state 38
+    lhs                            shift and go to state 45
+    SE                             shift and go to state 47
+    stmt_star                      shift and go to state 128
+    arrayAccess                    shift and go to state 34
+    empty                          shift and go to state 113
+
+state 115
+
+    (20) stmt -> LBRACE vardecl_star stmt_star . RBRACE
+
+    RBRACE          shift and go to state 129
+
+
+state 116
+
+    (35) SE -> lhs EQUALS AE .
+    (42) AE -> AE . binop AE
+    (66) binop -> . PLUS
+    (67) binop -> . MINUS
+    (68) binop -> . STAR
+    (69) binop -> . DIV
+    (70) binop -> . MOD
+    (71) binop -> . AND
+    (72) binop -> . OR
+    (73) binop -> . EQUAL
+    (74) binop -> . NEQUAL
+    (75) binop -> . LTHANEQ
+    (76) binop -> . LTHAN
+    (77) binop -> . GTHANEQ
+    (78) binop -> . GTHAN
+
+    COMMA           reduce using rule 35 (SE -> lhs EQUALS AE .)
+    RPAREN          reduce using rule 35 (SE -> lhs EQUALS AE .)
+    SEMICOLON       reduce using rule 35 (SE -> lhs EQUALS AE .)
+    DO              reduce using rule 35 (SE -> lhs EQUALS AE .)
+    RSQUARE         reduce using rule 35 (SE -> lhs EQUALS AE .)
+    THEN            reduce using rule 35 (SE -> lhs EQUALS AE .)
+    PLUS            shift and go to state 93
+    MINUS           shift and go to state 98
+    STAR            shift and go to state 95
+    DIV             shift and go to state 96
+    MOD             shift and go to state 99
+    AND             shift and go to state 85
+    OR              shift and go to state 91
+    EQUAL           shift and go to state 90
+    NEQUAL          shift and go to state 89
+    LTHANEQ         shift and go to state 94
+    LTHAN           shift and go to state 92
+    GTHANEQ         shift and go to state 97
+    GTHAN           shift and go to state 88
+
+  ! PLUS            [ reduce using rule 35 (SE -> lhs EQUALS AE .) ]
+  ! MINUS           [ reduce using rule 35 (SE -> lhs EQUALS AE .) ]
+  ! STAR            [ reduce using rule 35 (SE -> lhs EQUALS AE .) ]
+  ! DIV             [ reduce using rule 35 (SE -> lhs EQUALS AE .) ]
+  ! MOD             [ reduce using rule 35 (SE -> lhs EQUALS AE .) ]
+  ! AND             [ reduce using rule 35 (SE -> lhs EQUALS AE .) ]
+  ! OR              [ reduce using rule 35 (SE -> lhs EQUALS AE .) ]
+  ! EQUAL           [ reduce using rule 35 (SE -> lhs EQUALS AE .) ]
+  ! NEQUAL          [ reduce using rule 35 (SE -> lhs EQUALS AE .) ]
+  ! LTHANEQ         [ reduce using rule 35 (SE -> lhs EQUALS AE .) ]
+  ! LTHAN           [ reduce using rule 35 (SE -> lhs EQUALS AE .) ]
+  ! GTHANEQ         [ reduce using rule 35 (SE -> lhs EQUALS AE .) ]
+  ! GTHAN           [ reduce using rule 35 (SE -> lhs EQUALS AE .) ]
+
+    binop                          shift and go to state 87
+
+state 117
+
+    (33) stmt -> DO stmt WHILE AE . SEMICOLON
+    (42) AE -> AE . binop AE
+    (66) binop -> . PLUS
+    (67) binop -> . MINUS
+    (68) binop -> . STAR
+    (69) binop -> . DIV
+    (70) binop -> . MOD
+    (71) binop -> . AND
+    (72) binop -> . OR
+    (73) binop -> . EQUAL
+    (74) binop -> . NEQUAL
+    (75) binop -> . LTHANEQ
+    (76) binop -> . LTHAN
+    (77) binop -> . GTHANEQ
+    (78) binop -> . GTHAN
+
+    SEMICOLON       shift and go to state 130
+    PLUS            shift and go to state 93
+    MINUS           shift and go to state 98
+    STAR            shift and go to state 95
+    DIV             shift and go to state 96
+    MOD             shift and go to state 99
+    AND             shift and go to state 85
+    OR              shift and go to state 91
+    EQUAL           shift and go to state 90
+    NEQUAL          shift and go to state 89
+    LTHANEQ         shift and go to state 94
+    LTHAN           shift and go to state 92
+    GTHANEQ         shift and go to state 97
+    GTHAN           shift and go to state 88
+
+    binop                          shift and go to state 87
+
+state 118
+
+    (55) arrayAccess -> primary LSQUARE AE RSQUARE .
+
+    LSQUARE         reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    RSQUARE         reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    PLUS            reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    MINUS           reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    STAR            reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    DIV             reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    MOD             reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    AND             reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    OR              reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    EQUAL           reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    NEQUAL          reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    LTHANEQ         reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    LTHAN           reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    GTHANEQ         reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    GTHAN           reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    EQUALS          reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    INCREMENT       reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    DECREMENT       reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    THEN            reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    DO              reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    SEMICOLON       reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    RPAREN          reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+    COMMA           reduce using rule 55 (arrayAccess -> primary LSQUARE AE RSQUARE .)
+
+
+state 119
+
+    (61) newArray -> NEW type dimexpr . dim_star
+    (62) dim_star -> . dim dim_star
+    (63) dim_star -> . empty
+    (65) dim -> . LSQUARE RSQUARE
+    (81) empty -> .
+
+    LSQUARE         shift and go to state 133
+    DO              reduce using rule 81 (empty -> .)
+    PLUS            reduce using rule 81 (empty -> .)
+    MINUS           reduce using rule 81 (empty -> .)
+    STAR            reduce using rule 81 (empty -> .)
+    DIV             reduce using rule 81 (empty -> .)
+    MOD             reduce using rule 81 (empty -> .)
+    AND             reduce using rule 81 (empty -> .)
+    OR              reduce using rule 81 (empty -> .)
+    EQUAL           reduce using rule 81 (empty -> .)
+    NEQUAL          reduce using rule 81 (empty -> .)
+    LTHANEQ         reduce using rule 81 (empty -> .)
+    LTHAN           reduce using rule 81 (empty -> .)
+    GTHANEQ         reduce using rule 81 (empty -> .)
+    GTHAN           reduce using rule 81 (empty -> .)
+    SEMICOLON       reduce using rule 81 (empty -> .)
+    RPAREN          reduce using rule 81 (empty -> .)
+    THEN            reduce using rule 81 (empty -> .)
+    RSQUARE         reduce using rule 81 (empty -> .)
+    COMMA           reduce using rule 81 (empty -> .)
+
+    dim_star                       shift and go to state 132
+    empty                          shift and go to state 134
+    dim                            shift and go to state 131
+
+state 120
+
+    (13) type -> type LSQUARE . RSQUARE
+    (64) dimexpr -> LSQUARE . AE RSQUARE
+    (42) AE -> . AE binop AE
+    (43) AE -> . unop AE
+    (44) AE -> . primary
+    (45) AE -> . SE
+    (46) AE -> . newArray
+    (79) unop -> . MINUS
+    (80) unop -> . NOT
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (61) newArray -> . NEW type dimexpr dim_star
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+
+    RSQUARE         shift and go to state 15
+    MINUS           shift and go to state 55
+    NOT             shift and go to state 59
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+    IDENTIFIER      shift and go to state 57
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    NEW             shift and go to state 54
+
+    unop                           shift and go to state 51
+    AE                             shift and go to state 135
+    primary                        shift and go to state 52
+    functionCall                   shift and go to state 38
+    newArray                       shift and go to state 53
+    lhs                            shift and go to state 45
+    arrayAccess                    shift and go to state 56
+    SE                             shift and go to state 60
+
+state 121
+
+    (27) stmt -> WHILE AE DO stmt .
+
+    INT             reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    BOOL            reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    VOID            reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    $end            reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    PRINT           reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    LBRACE          reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    IF              reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    WHILE           reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    FOR             reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    DO              reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    RETURN          reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    INCREMENT       reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    DECREMENT       reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    IDENTIFIER      reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    INTCONST        reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    TRUE            reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    FALSE           reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    INPUT           reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    LPAREN          reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    RBRACE          reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+    ELSE            reduce using rule 27 (stmt -> WHILE AE DO stmt .)
+
+
+state 122
+
+    (42) AE -> AE binop AE .
+    (42) AE -> AE . binop AE
+    (66) binop -> . PLUS
+    (67) binop -> . MINUS
+    (68) binop -> . STAR
+    (69) binop -> . DIV
+    (70) binop -> . MOD
+    (71) binop -> . AND
+    (72) binop -> . OR
+    (73) binop -> . EQUAL
+    (74) binop -> . NEQUAL
+    (75) binop -> . LTHANEQ
+    (76) binop -> . LTHAN
+    (77) binop -> . GTHANEQ
+    (78) binop -> . GTHAN
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for STAR resolved as shift
+  ! shift/reduce conflict for DIV resolved as shift
+  ! shift/reduce conflict for MOD resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for EQUAL resolved as shift
+  ! shift/reduce conflict for NEQUAL resolved as shift
+  ! shift/reduce conflict for LTHANEQ resolved as shift
+  ! shift/reduce conflict for LTHAN resolved as shift
+  ! shift/reduce conflict for GTHANEQ resolved as shift
+  ! shift/reduce conflict for GTHAN resolved as shift
+    DO              reduce using rule 42 (AE -> AE binop AE .)
+    SEMICOLON       reduce using rule 42 (AE -> AE binop AE .)
+    RPAREN          reduce using rule 42 (AE -> AE binop AE .)
+    THEN            reduce using rule 42 (AE -> AE binop AE .)
+    RSQUARE         reduce using rule 42 (AE -> AE binop AE .)
+    COMMA           reduce using rule 42 (AE -> AE binop AE .)
+    PLUS            shift and go to state 93
+    MINUS           shift and go to state 98
+    STAR            shift and go to state 95
+    DIV             shift and go to state 96
+    MOD             shift and go to state 99
+    AND             shift and go to state 85
+    OR              shift and go to state 91
+    EQUAL           shift and go to state 90
+    NEQUAL          shift and go to state 89
+    LTHANEQ         shift and go to state 94
+    LTHAN           shift and go to state 92
+    GTHANEQ         shift and go to state 97
+    GTHAN           shift and go to state 88
+
+  ! PLUS            [ reduce using rule 42 (AE -> AE binop AE .) ]
+  ! MINUS           [ reduce using rule 42 (AE -> AE binop AE .) ]
+  ! STAR            [ reduce using rule 42 (AE -> AE binop AE .) ]
+  ! DIV             [ reduce using rule 42 (AE -> AE binop AE .) ]
+  ! MOD             [ reduce using rule 42 (AE -> AE binop AE .) ]
+  ! AND             [ reduce using rule 42 (AE -> AE binop AE .) ]
+  ! OR              [ reduce using rule 42 (AE -> AE binop AE .) ]
+  ! EQUAL           [ reduce using rule 42 (AE -> AE binop AE .) ]
+  ! NEQUAL          [ reduce using rule 42 (AE -> AE binop AE .) ]
+  ! LTHANEQ         [ reduce using rule 42 (AE -> AE binop AE .) ]
+  ! LTHAN           [ reduce using rule 42 (AE -> AE binop AE .) ]
+  ! GTHANEQ         [ reduce using rule 42 (AE -> AE binop AE .) ]
+  ! GTHAN           [ reduce using rule 42 (AE -> AE binop AE .) ]
+
+    binop                          shift and go to state 87
+
+state 123
+
+    (19) stmt -> PRINT LPAREN AE RPAREN . SEMICOLON
+
+    SEMICOLON       shift and go to state 136
+
+
+state 124
+
+    (59) args -> AE COMMA . args
+    (59) args -> . AE COMMA args
+    (60) args -> . AE
+    (42) AE -> . AE binop AE
+    (43) AE -> . unop AE
+    (44) AE -> . primary
+    (45) AE -> . SE
+    (46) AE -> . newArray
+    (79) unop -> . MINUS
+    (80) unop -> . NOT
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (61) newArray -> . NEW type dimexpr dim_star
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+
+    MINUS           shift and go to state 55
+    NOT             shift and go to state 59
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+    IDENTIFIER      shift and go to state 57
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    NEW             shift and go to state 54
+
+    unop                           shift and go to state 51
+    AE                             shift and go to state 103
+    args                           shift and go to state 137
+    primary                        shift and go to state 52
+    functionCall                   shift and go to state 38
+    newArray                       shift and go to state 53
+    lhs                            shift and go to state 45
+    arrayAccess                    shift and go to state 56
+    SE                             shift and go to state 60
+
+state 125
+
+    (56) functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .
+
+    LSQUARE         reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+    RSQUARE         reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+    PLUS            reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+    MINUS           reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+    STAR            reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+    DIV             reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+    MOD             reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+    AND             reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+    OR              reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+    EQUAL           reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+    NEQUAL          reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+    LTHANEQ         reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+    LTHAN           reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+    GTHANEQ         reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+    GTHAN           reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+    DO              reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+    SEMICOLON       reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+    RPAREN          reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+    THEN            reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+    COMMA           reduce using rule 56 (functionCall -> IDENTIFIER LPAREN argsOpt RPAREN .)
+
+
+state 126
+
+    (28) stmt -> FOR LPAREN SEOpt SEMICOLON . AEOpt SEMICOLON SEOpt RPAREN stmt
+    (31) AEOpt -> . AE
+    (32) AEOpt -> . empty
+    (42) AE -> . AE binop AE
+    (43) AE -> . unop AE
+    (44) AE -> . primary
+    (45) AE -> . SE
+    (46) AE -> . newArray
+    (81) empty -> .
+    (79) unop -> . MINUS
+    (80) unop -> . NOT
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (61) newArray -> . NEW type dimexpr dim_star
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+
+    SEMICOLON       reduce using rule 81 (empty -> .)
+    MINUS           shift and go to state 55
+    NOT             shift and go to state 59
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+    IDENTIFIER      shift and go to state 57
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    NEW             shift and go to state 54
+
+    unop                           shift and go to state 51
+    AE                             shift and go to state 64
+    lhs                            shift and go to state 45
+    primary                        shift and go to state 52
+    functionCall                   shift and go to state 38
+    SE                             shift and go to state 60
+    AEOpt                          shift and go to state 138
+    arrayAccess                    shift and go to state 56
+    empty                          shift and go to state 63
+    newArray                       shift and go to state 53
+
+state 127
+
+    (25) stmt -> IF AE THEN stmt . ELSE stmt
+    (26) stmt -> IF AE THEN stmt .
+
+  ! shift/reduce conflict for ELSE resolved as shift
+    ELSE            shift and go to state 139
+    INT             reduce using rule 26 (stmt -> IF AE THEN stmt .)
+    BOOL            reduce using rule 26 (stmt -> IF AE THEN stmt .)
+    VOID            reduce using rule 26 (stmt -> IF AE THEN stmt .)
+    $end            reduce using rule 26 (stmt -> IF AE THEN stmt .)
+    PRINT           reduce using rule 26 (stmt -> IF AE THEN stmt .)
+    LBRACE          reduce using rule 26 (stmt -> IF AE THEN stmt .)
+    IF              reduce using rule 26 (stmt -> IF AE THEN stmt .)
+    WHILE           reduce using rule 26 (stmt -> IF AE THEN stmt .)
+    FOR             reduce using rule 26 (stmt -> IF AE THEN stmt .)
+    DO              reduce using rule 26 (stmt -> IF AE THEN stmt .)
+    RETURN          reduce using rule 26 (stmt -> IF AE THEN stmt .)
+    INCREMENT       reduce using rule 26 (stmt -> IF AE THEN stmt .)
+    DECREMENT       reduce using rule 26 (stmt -> IF AE THEN stmt .)
+    IDENTIFIER      reduce using rule 26 (stmt -> IF AE THEN stmt .)
+    INTCONST        reduce using rule 26 (stmt -> IF AE THEN stmt .)
+    TRUE            reduce using rule 26 (stmt -> IF AE THEN stmt .)
+    FALSE           reduce using rule 26 (stmt -> IF AE THEN stmt .)
+    INPUT           reduce using rule 26 (stmt -> IF AE THEN stmt .)
+    LPAREN          reduce using rule 26 (stmt -> IF AE THEN stmt .)
+    RBRACE          reduce using rule 26 (stmt -> IF AE THEN stmt .)
+
+  ! ELSE            [ reduce using rule 26 (stmt -> IF AE THEN stmt .) ]
+
+
+state 128
+
+    (23) stmt_star -> stmt stmt_star .
+
+    RBRACE          reduce using rule 23 (stmt_star -> stmt stmt_star .)
+
+
+state 129
+
+    (20) stmt -> LBRACE vardecl_star stmt_star RBRACE .
+
+    INT             reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    BOOL            reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    VOID            reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    $end            reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    PRINT           reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    LBRACE          reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    IF              reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    WHILE           reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    FOR             reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    DO              reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    RETURN          reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    INCREMENT       reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    DECREMENT       reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    IDENTIFIER      reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    INTCONST        reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    TRUE            reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    FALSE           reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    INPUT           reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    LPAREN          reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    RBRACE          reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+    ELSE            reduce using rule 20 (stmt -> LBRACE vardecl_star stmt_star RBRACE .)
+
+
+state 130
+
+    (33) stmt -> DO stmt WHILE AE SEMICOLON .
+
+    INT             reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    BOOL            reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    VOID            reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    $end            reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    PRINT           reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    LBRACE          reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    IF              reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    WHILE           reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    FOR             reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    DO              reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    RETURN          reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    INCREMENT       reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    DECREMENT       reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    IDENTIFIER      reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    INTCONST        reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    TRUE            reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    FALSE           reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    INPUT           reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    LPAREN          reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    RBRACE          reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+    ELSE            reduce using rule 33 (stmt -> DO stmt WHILE AE SEMICOLON .)
+
+
+state 131
+
+    (62) dim_star -> dim . dim_star
+    (62) dim_star -> . dim dim_star
+    (63) dim_star -> . empty
+    (65) dim -> . LSQUARE RSQUARE
+    (81) empty -> .
+
+    LSQUARE         shift and go to state 133
+    DO              reduce using rule 81 (empty -> .)
+    PLUS            reduce using rule 81 (empty -> .)
+    MINUS           reduce using rule 81 (empty -> .)
+    STAR            reduce using rule 81 (empty -> .)
+    DIV             reduce using rule 81 (empty -> .)
+    MOD             reduce using rule 81 (empty -> .)
+    AND             reduce using rule 81 (empty -> .)
+    OR              reduce using rule 81 (empty -> .)
+    EQUAL           reduce using rule 81 (empty -> .)
+    NEQUAL          reduce using rule 81 (empty -> .)
+    LTHANEQ         reduce using rule 81 (empty -> .)
+    LTHAN           reduce using rule 81 (empty -> .)
+    GTHANEQ         reduce using rule 81 (empty -> .)
+    GTHAN           reduce using rule 81 (empty -> .)
+    SEMICOLON       reduce using rule 81 (empty -> .)
+    RPAREN          reduce using rule 81 (empty -> .)
+    THEN            reduce using rule 81 (empty -> .)
+    RSQUARE         reduce using rule 81 (empty -> .)
+    COMMA           reduce using rule 81 (empty -> .)
+
+    dim                            shift and go to state 131
+    dim_star                       shift and go to state 140
+    empty                          shift and go to state 134
+
+state 132
+
+    (61) newArray -> NEW type dimexpr dim_star .
+
+    RPAREN          reduce using rule 61 (newArray -> NEW type dimexpr dim_star .)
+    PLUS            reduce using rule 61 (newArray -> NEW type dimexpr dim_star .)
+    MINUS           reduce using rule 61 (newArray -> NEW type dimexpr dim_star .)
+    STAR            reduce using rule 61 (newArray -> NEW type dimexpr dim_star .)
+    DIV             reduce using rule 61 (newArray -> NEW type dimexpr dim_star .)
+    MOD             reduce using rule 61 (newArray -> NEW type dimexpr dim_star .)
+    AND             reduce using rule 61 (newArray -> NEW type dimexpr dim_star .)
+    OR              reduce using rule 61 (newArray -> NEW type dimexpr dim_star .)
+    EQUAL           reduce using rule 61 (newArray -> NEW type dimexpr dim_star .)
+    NEQUAL          reduce using rule 61 (newArray -> NEW type dimexpr dim_star .)
+    LTHANEQ         reduce using rule 61 (newArray -> NEW type dimexpr dim_star .)
+    LTHAN           reduce using rule 61 (newArray -> NEW type dimexpr dim_star .)
+    GTHANEQ         reduce using rule 61 (newArray -> NEW type dimexpr dim_star .)
+    GTHAN           reduce using rule 61 (newArray -> NEW type dimexpr dim_star .)
+    RSQUARE         reduce using rule 61 (newArray -> NEW type dimexpr dim_star .)
+    SEMICOLON       reduce using rule 61 (newArray -> NEW type dimexpr dim_star .)
+    THEN            reduce using rule 61 (newArray -> NEW type dimexpr dim_star .)
+    DO              reduce using rule 61 (newArray -> NEW type dimexpr dim_star .)
+    COMMA           reduce using rule 61 (newArray -> NEW type dimexpr dim_star .)
+
+
+state 133
+
+    (65) dim -> LSQUARE . RSQUARE
+
+    RSQUARE         shift and go to state 141
+
+
+state 134
+
+    (63) dim_star -> empty .
+
+    DO              reduce using rule 63 (dim_star -> empty .)
+    PLUS            reduce using rule 63 (dim_star -> empty .)
+    MINUS           reduce using rule 63 (dim_star -> empty .)
+    STAR            reduce using rule 63 (dim_star -> empty .)
+    DIV             reduce using rule 63 (dim_star -> empty .)
+    MOD             reduce using rule 63 (dim_star -> empty .)
+    AND             reduce using rule 63 (dim_star -> empty .)
+    OR              reduce using rule 63 (dim_star -> empty .)
+    EQUAL           reduce using rule 63 (dim_star -> empty .)
+    NEQUAL          reduce using rule 63 (dim_star -> empty .)
+    LTHANEQ         reduce using rule 63 (dim_star -> empty .)
+    LTHAN           reduce using rule 63 (dim_star -> empty .)
+    GTHANEQ         reduce using rule 63 (dim_star -> empty .)
+    GTHAN           reduce using rule 63 (dim_star -> empty .)
+    SEMICOLON       reduce using rule 63 (dim_star -> empty .)
+    RPAREN          reduce using rule 63 (dim_star -> empty .)
+    THEN            reduce using rule 63 (dim_star -> empty .)
+    RSQUARE         reduce using rule 63 (dim_star -> empty .)
+    COMMA           reduce using rule 63 (dim_star -> empty .)
+
+
+state 135
+
+    (64) dimexpr -> LSQUARE AE . RSQUARE
+    (42) AE -> AE . binop AE
+    (66) binop -> . PLUS
+    (67) binop -> . MINUS
+    (68) binop -> . STAR
+    (69) binop -> . DIV
+    (70) binop -> . MOD
+    (71) binop -> . AND
+    (72) binop -> . OR
+    (73) binop -> . EQUAL
+    (74) binop -> . NEQUAL
+    (75) binop -> . LTHANEQ
+    (76) binop -> . LTHAN
+    (77) binop -> . GTHANEQ
+    (78) binop -> . GTHAN
+
+    RSQUARE         shift and go to state 142
+    PLUS            shift and go to state 93
+    MINUS           shift and go to state 98
+    STAR            shift and go to state 95
+    DIV             shift and go to state 96
+    MOD             shift and go to state 99
+    AND             shift and go to state 85
+    OR              shift and go to state 91
+    EQUAL           shift and go to state 90
+    NEQUAL          shift and go to state 89
+    LTHANEQ         shift and go to state 94
+    LTHAN           shift and go to state 92
+    GTHANEQ         shift and go to state 97
+    GTHAN           shift and go to state 88
+
+    binop                          shift and go to state 87
+
+state 136
+
+    (19) stmt -> PRINT LPAREN AE RPAREN SEMICOLON .
+
+    INT             reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    BOOL            reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    VOID            reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    $end            reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    PRINT           reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    LBRACE          reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    IF              reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    WHILE           reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    FOR             reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    DO              reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    RETURN          reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    INCREMENT       reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    DECREMENT       reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    IDENTIFIER      reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    INTCONST        reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    TRUE            reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    FALSE           reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    INPUT           reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    LPAREN          reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    RBRACE          reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+    ELSE            reduce using rule 19 (stmt -> PRINT LPAREN AE RPAREN SEMICOLON .)
+
+
+state 137
+
+    (59) args -> AE COMMA args .
+
+    RPAREN          reduce using rule 59 (args -> AE COMMA args .)
+
+
+state 138
+
+    (28) stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt . SEMICOLON SEOpt RPAREN stmt
+
+    SEMICOLON       shift and go to state 143
+
+
+state 139
+
+    (25) stmt -> IF AE THEN stmt ELSE . stmt
+    (18) stmt -> . SE SEMICOLON
+    (19) stmt -> . PRINT LPAREN AE RPAREN SEMICOLON
+    (20) stmt -> . LBRACE vardecl_star stmt_star RBRACE
+    (25) stmt -> . IF AE THEN stmt ELSE stmt
+    (26) stmt -> . IF AE THEN stmt
+    (27) stmt -> . WHILE AE DO stmt
+    (28) stmt -> . FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt
+    (33) stmt -> . DO stmt WHILE AE SEMICOLON
+    (34) stmt -> . RETURN AEOpt SEMICOLON
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+
+    PRINT           shift and go to state 30
+    LBRACE          shift and go to state 43
+    IF              shift and go to state 42
+    WHILE           shift and go to state 29
+    FOR             shift and go to state 36
+    DO              shift and go to state 27
+    RETURN          shift and go to state 31
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    IDENTIFIER      shift and go to state 35
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+
+    primary                        shift and go to state 28
+    stmt                           shift and go to state 144
+    functionCall                   shift and go to state 38
+    lhs                            shift and go to state 45
+    arrayAccess                    shift and go to state 34
+    SE                             shift and go to state 47
+
+state 140
+
+    (62) dim_star -> dim dim_star .
+
+    DO              reduce using rule 62 (dim_star -> dim dim_star .)
+    PLUS            reduce using rule 62 (dim_star -> dim dim_star .)
+    MINUS           reduce using rule 62 (dim_star -> dim dim_star .)
+    STAR            reduce using rule 62 (dim_star -> dim dim_star .)
+    DIV             reduce using rule 62 (dim_star -> dim dim_star .)
+    MOD             reduce using rule 62 (dim_star -> dim dim_star .)
+    AND             reduce using rule 62 (dim_star -> dim dim_star .)
+    OR              reduce using rule 62 (dim_star -> dim dim_star .)
+    EQUAL           reduce using rule 62 (dim_star -> dim dim_star .)
+    NEQUAL          reduce using rule 62 (dim_star -> dim dim_star .)
+    LTHANEQ         reduce using rule 62 (dim_star -> dim dim_star .)
+    LTHAN           reduce using rule 62 (dim_star -> dim dim_star .)
+    GTHANEQ         reduce using rule 62 (dim_star -> dim dim_star .)
+    GTHAN           reduce using rule 62 (dim_star -> dim dim_star .)
+    SEMICOLON       reduce using rule 62 (dim_star -> dim dim_star .)
+    RPAREN          reduce using rule 62 (dim_star -> dim dim_star .)
+    THEN            reduce using rule 62 (dim_star -> dim dim_star .)
+    RSQUARE         reduce using rule 62 (dim_star -> dim dim_star .)
+    COMMA           reduce using rule 62 (dim_star -> dim dim_star .)
+
+
+state 141
+
+    (65) dim -> LSQUARE RSQUARE .
+
+    LSQUARE         reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+    DO              reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+    PLUS            reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+    MINUS           reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+    STAR            reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+    DIV             reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+    MOD             reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+    AND             reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+    OR              reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+    EQUAL           reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+    NEQUAL          reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+    LTHANEQ         reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+    LTHAN           reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+    GTHANEQ         reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+    GTHAN           reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+    SEMICOLON       reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+    RPAREN          reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+    THEN            reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+    RSQUARE         reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+    COMMA           reduce using rule 65 (dim -> LSQUARE RSQUARE .)
+
+
+state 142
+
+    (64) dimexpr -> LSQUARE AE RSQUARE .
+
+    LSQUARE         reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+    DO              reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+    PLUS            reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+    MINUS           reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+    STAR            reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+    DIV             reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+    MOD             reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+    AND             reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+    OR              reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+    EQUAL           reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+    NEQUAL          reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+    LTHANEQ         reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+    LTHAN           reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+    GTHANEQ         reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+    GTHAN           reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+    SEMICOLON       reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+    RPAREN          reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+    THEN            reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+    RSQUARE         reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+    COMMA           reduce using rule 64 (dimexpr -> LSQUARE AE RSQUARE .)
+
+
+state 143
+
+    (28) stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON . SEOpt RPAREN stmt
+    (29) SEOpt -> . SE
+    (30) SEOpt -> . empty
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (81) empty -> .
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    RPAREN          reduce using rule 81 (empty -> .)
+    IDENTIFIER      shift and go to state 35
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+
+    primary                        shift and go to state 28
+    functionCall                   shift and go to state 38
+    SEOpt                          shift and go to state 145
+    lhs                            shift and go to state 45
+    SE                             shift and go to state 108
+    arrayAccess                    shift and go to state 34
+    empty                          shift and go to state 107
+
+state 144
+
+    (25) stmt -> IF AE THEN stmt ELSE stmt .
+
+    INT             reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    BOOL            reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    VOID            reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    $end            reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    PRINT           reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    LBRACE          reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    IF              reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    WHILE           reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    FOR             reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    DO              reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    RETURN          reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    INCREMENT       reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    DECREMENT       reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    IDENTIFIER      reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    INTCONST        reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    TRUE            reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    FALSE           reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    INPUT           reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    LPAREN          reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    RBRACE          reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+    ELSE            reduce using rule 25 (stmt -> IF AE THEN stmt ELSE stmt .)
+
+
+state 145
+
+    (28) stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt . RPAREN stmt
+
+    RPAREN          shift and go to state 146
+
+
+state 146
+
+    (28) stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN . stmt
+    (18) stmt -> . SE SEMICOLON
+    (19) stmt -> . PRINT LPAREN AE RPAREN SEMICOLON
+    (20) stmt -> . LBRACE vardecl_star stmt_star RBRACE
+    (25) stmt -> . IF AE THEN stmt ELSE stmt
+    (26) stmt -> . IF AE THEN stmt
+    (27) stmt -> . WHILE AE DO stmt
+    (28) stmt -> . FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt
+    (33) stmt -> . DO stmt WHILE AE SEMICOLON
+    (34) stmt -> . RETURN AEOpt SEMICOLON
+    (35) SE -> . lhs EQUALS AE
+    (36) SE -> . lhs INCREMENT
+    (37) SE -> . lhs DECREMENT
+    (38) SE -> . INCREMENT lhs
+    (39) SE -> . DECREMENT lhs
+    (40) lhs -> . IDENTIFIER
+    (41) lhs -> . arrayAccess
+    (55) arrayAccess -> . primary LSQUARE AE RSQUARE
+    (47) primary -> . INTCONST
+    (48) primary -> . TRUE
+    (49) primary -> . FALSE
+    (50) primary -> . INPUT LPAREN RPAREN
+    (51) primary -> . LPAREN AE RPAREN
+    (52) primary -> . IDENTIFIER
+    (53) primary -> . arrayAccess
+    (54) primary -> . functionCall
+    (56) functionCall -> . IDENTIFIER LPAREN argsOpt RPAREN
+
+    PRINT           shift and go to state 30
+    LBRACE          shift and go to state 43
+    IF              shift and go to state 42
+    WHILE           shift and go to state 29
+    FOR             shift and go to state 36
+    DO              shift and go to state 27
+    RETURN          shift and go to state 31
+    INCREMENT       shift and go to state 33
+    DECREMENT       shift and go to state 46
+    IDENTIFIER      shift and go to state 35
+    INTCONST        shift and go to state 40
+    TRUE            shift and go to state 32
+    FALSE           shift and go to state 44
+    INPUT           shift and go to state 41
+    LPAREN          shift and go to state 39
+
+    primary                        shift and go to state 28
+    stmt                           shift and go to state 147
+    functionCall                   shift and go to state 38
+    lhs                            shift and go to state 45
+    arrayAccess                    shift and go to state 34
+    SE                             shift and go to state 47
+
+state 147
+
+    (28) stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .
+
+    INT             reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    BOOL            reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    VOID            reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    $end            reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    PRINT           reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    LBRACE          reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    IF              reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    WHILE           reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    FOR             reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    DO              reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    RETURN          reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    INCREMENT       reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    DECREMENT       reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    IDENTIFIER      reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    INTCONST        reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    TRUE            reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    FALSE           reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    INPUT           reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    LPAREN          reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    RBRACE          reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+    ELSE            reduce using rule 28 (stmt -> FOR LPAREN SEOpt SEMICOLON AEOpt SEMICOLON SEOpt RPAREN stmt .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for PLUS in state 122 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 122 resolved as shift
+WARNING: shift/reduce conflict for STAR in state 122 resolved as shift
+WARNING: shift/reduce conflict for DIV in state 122 resolved as shift
+WARNING: shift/reduce conflict for MOD in state 122 resolved as shift
+WARNING: shift/reduce conflict for AND in state 122 resolved as shift
+WARNING: shift/reduce conflict for OR in state 122 resolved as shift
+WARNING: shift/reduce conflict for EQUAL in state 122 resolved as shift
+WARNING: shift/reduce conflict for NEQUAL in state 122 resolved as shift
+WARNING: shift/reduce conflict for LTHANEQ in state 122 resolved as shift
+WARNING: shift/reduce conflict for LTHAN in state 122 resolved as shift
+WARNING: shift/reduce conflict for GTHANEQ in state 122 resolved as shift
+WARNING: shift/reduce conflict for GTHAN in state 122 resolved as shift
+WARNING: shift/reduce conflict for ELSE in state 127 resolved as shift

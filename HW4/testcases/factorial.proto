@@ -1,0 +1,17 @@
+int i, f;
+
+i = input();
+f = 1;
+if ( i == 1 ) then
+{
+print(f);
+}
+else
+{
+int j;
+for (j = 2; j <= i; j++)
+{
+f = f * j;
+}
+print(f);
+}

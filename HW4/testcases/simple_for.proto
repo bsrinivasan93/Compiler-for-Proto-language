@@ -1,0 +1,7 @@
+int i, c, d;
+for (i = 10; i  < 10; i = i + 1) {
+  c = i +1;
+  d = i + 2;
+ print (c+d);
+}
+print(10);

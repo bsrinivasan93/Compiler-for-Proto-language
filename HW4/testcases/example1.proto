@@ -1,0 +1,15 @@
+int a, i, c[], d[], e[];
+a = 10;
+c = new int[a];
+d = new int[a];
+e = new int[a];
+for(i=0;i<10;i++)
+{
+c[i] = i;
+d[i] = 10;
+}
+for(i=0;i<10;i++)
+{
+e[i] = c[i] + d[i];
+print(e[i]);
+}

@@ -1,0 +1,9 @@
+a = input();
+b = 35;
+c = a + 10;
+d = a + b;
+c1 = d;
+a = a * 2;
+print( a - b );
+print( a + 2);
+print(c1);

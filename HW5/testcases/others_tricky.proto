@@ -1,0 +1,16 @@
+void main()
+{
+int i;
+i = 10;
+
+{
+{
+int i, j;
+for (j = 0; j < 10; j++) {
+i = ++j;
+print (i);
+}
+}
+}
+return;
+}

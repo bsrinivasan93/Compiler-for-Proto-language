@@ -1,0 +1,11 @@
+{
+c=a+b+d*-e;
+print(a-b);
+print(-c);
+{
+a=input();
+}
+print((a+b));
+print(a);
+print(10);
+}

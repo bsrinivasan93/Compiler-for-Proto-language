@@ -1,0 +1,8 @@
+int i,j;
+int a,b;
+i=10;
+a=i++;
+print(a);
+print(i--);
+b=--i;
+print(++i);

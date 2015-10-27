@@ -1,0 +1,17 @@
+void main()
+{
+int c,d, i;
+d = 20;
+do {
+   c = input();
+  d = c+10;
+  print (d);
+  i = 30;
+  do {
+    i = input();
+   print(i);
+  } while (i < 3);
+  print(30);
+} while (d < 2);
+return;
+}

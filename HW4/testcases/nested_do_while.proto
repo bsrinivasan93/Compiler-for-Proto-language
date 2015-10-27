@@ -1,0 +1,13 @@
+int c,d, i;
+d = 20;
+do {
+   c = input();
+  d = c;
+  print (d);
+  i = 30;
+  do {
+    i = input();
+   print(i);
+  } while (i < 20);
+  print(30);
+} while (d < 10);

@@ -1,0 +1,7 @@
+c = input();
+d = c + 20;
+
+if c < 100 then
+print(c);
+else
+print(d);

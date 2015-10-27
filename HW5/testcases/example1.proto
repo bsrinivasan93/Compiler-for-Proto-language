@@ -1,0 +1,9 @@
+int a, i, c[];
+a = 10;
+c = new int[a];
+for(i=0;i<10;i++)
+c[i] = 1;
+//for(i=0;i<10;i++)
+print(c[0]);
+print(c[1]);
+//print(c[2]);

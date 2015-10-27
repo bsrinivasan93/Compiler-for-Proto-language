@@ -1,0 +1,78 @@
+int sum(int i, int j)
+{
+return i+j;
+}
+
+int test(int i, int j)
+{
+int k;
+k = 10;
+if k < 10 then {
+return k;
+}
+else {
+k = 10;
+return k;
+}
+}
+int test1(int i)
+{
+print(i);
+while i < 10 do {
+return i;
+}
+return i;
+}
+
+int test2(int i)
+{
+print(i);
+return i;
+}
+void main()
+{
+int i;
+bool t;
+for (i = 0; i < 10; i ++) {
+print (i);
+}
+
+{
+bool i, j;
+int k;
+i = true;
+//this should throw an error
+//k = i++;
+i = j = false;
+//this should throw an error
+i = true;
+//this should throw an error
+k = 10;
+//this should throw an error
+k = 20 + 30 + 40;
+//this should throw an error
+print(20);
+}
+{
+int i, k, j;
+bool a,b,c;
+a = b = true;
+i = k = j = 10;
+//error
+a = i < j;
+//error
+a = i < 10;
+//error
+a = a && b;
+//error
+a = a == b;
+}
+i = sum(10,20);
+i = sum (10, 30);
+i = sum(10, 20);
+i = sum(10,20);
+i = test(20, 30);
+i = test1(20);
+i = test2(20);
+return ;
+}

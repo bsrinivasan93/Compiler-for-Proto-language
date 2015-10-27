@@ -1,0 +1,10 @@
+void main()
+{
+int a, i;
+int[] c;
+a = 10;
+c = new int[a];
+for(i=0;i<10;i++)
+c[i] = i;
+for(i=0;i<10;i++)
+print(c[i]);
